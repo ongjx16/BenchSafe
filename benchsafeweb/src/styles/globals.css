@@ -7,15 +7,15 @@
 @layer base {
 
   h1 {
-    @apply text-2xl font-semibold font-poppins;
+    @apply text-2xl lg:text-4xl font-semibold font-poppins;
   }
   h2 {
-    @apply text-xl font-medium font-poppins;
+    @apply text-xl lg:text-2xl font-medium font-poppins;
   }
   h3 {
-    @apply text-base font-poppins;
+    @apply text-base lg:text-lg font-poppins;
   }
   text {
-    @apply text-sm font-normal font-poppins;
+    @apply text-sm lg:text-base font-normal font-poppins;
   }
 }

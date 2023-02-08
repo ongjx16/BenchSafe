@@ -8,6 +8,7 @@ module.exports = {
       },
       colors: {
         black: "#000000",
+        white: "#FFFFFF",
         purple: {
           300: "#C58BF2", //words (gradient right)
           200: "#EEA4CE" //(gradient left)

@@ -1,4 +1,5 @@
 import Button from "@/components/button"
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -18,6 +19,10 @@ export default function Home() {
         </text>
         <div className = "w-screen flex justify-center" >
           <Button text="niunj"/>
+        </div>
+        <div className = "text-red-500 flex flex-col">
+          <Link href="/LoginScreen">Login Page</Link>
+          <Link href="/TensorFlow">Tensor Flow Page</Link>
         </div>
       </div>
     </>

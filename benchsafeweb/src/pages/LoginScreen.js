@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import cover from '../../public/assets/benchsafe.jpg'
+//import cover from '../../public/assets/benchsafe.jpg'
 
 export const LoginScreen = (props) => {
 
@@ -18,7 +18,7 @@ export const LoginScreen = (props) => {
           <h1 className="text-4xl text-white font-bold my-4">BenchSafe</h1>
         </div>
         
-        <img src={cover} alt="cover" className="w-full h-full object-cover"/>
+        {/* <img src={cover} alt="cover" className="w-full h-full object-cover"/> */}
       </div>
       <div>
         <div className="auth-form-container">

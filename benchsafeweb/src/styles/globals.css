@@ -19,3 +19,57 @@
     @apply text-sm lg:text-base font-normal font-poppins;
   }
 }
+
+.App {
+  text-align: center;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  background-image: linear-gradient(79deg, #fcfced, #fcedfc 48%, #ebf6ff);
+}
+
+.auth-form-container {
+  display: flex;
+  font-weight: 200;
+  font-family: poppins; 
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.login-form, .register-form {
+  display: flex;
+  font-weight: 200;
+  font-family: poppins; 
+  flex-direction: column;
+}
+
+label {
+  text-align: left;
+  padding: 0.25rem 0;
+}
+
+input {
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+}
+
+button {
+  border: none;
+  background: linear-gradient(274.42deg, #92A3FD 0%, #9DCEFF 124.45%);
+  padding: 20px;
+  border-radius: 99px;
+  cursor: pointer;
+  color: white;
+  align-content: flex-end;
+  width: 100%;
+}
+
+.link-btn {
+  background: none;
+  color: black;
+  text-decoration: underline;
+}

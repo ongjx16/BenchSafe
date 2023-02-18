@@ -1,7 +1,23 @@
+import React, { useState } from "react";
 import '@/styles/globals.css'
+import { Login } from "./Login";
+import { Register } from "./Register";
 
-export default function App({ Component, pageProps }) {
+function App() {
+  const [currentForm, setCurrentForm] = useState('login');
+
+  const toggleForm = (formName) => {
+    setCurrentForm(formName);
+  }
+
   return (
-      <Component {...pageProps} />
-  )
+    <div className='App'>
+      {
+        currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />
+      }
+    </div>
+      //<Component {...pageProps} />
+  );
 }
+
+export default App;

@@ -17,7 +17,7 @@ export default function Home() {
           BenchSafe App
         </text>
         <div className = "w-screen flex justify-center" >
-          <Button text="niunj"/>
+          <Button text="BenchSafe App"/>
         </div>
       </div>
     </>

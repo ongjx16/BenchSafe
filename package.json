@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "scatter-gl": "^0.0.13"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^6.5.1"
+  }
+}

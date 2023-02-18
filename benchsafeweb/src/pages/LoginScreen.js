@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import cover from '../../public/assets/benchsafe.jpg'
 
-export const Login = (props) => {
+export const LoginScreen = (props) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

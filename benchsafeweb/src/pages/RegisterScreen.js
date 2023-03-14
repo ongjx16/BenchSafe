@@ -13,54 +13,61 @@ export const RegisterScreen = (props) => {
     }
     
     return(
-        <div className="auth-form-container">
-            <div>
-            <div>
+        <div>git 
+            <div className="auth-form-container">
                 <div>
-                    <h2>Hey there,</h2>
+                    {/* header */}
+                    <div>
+                        <div>
+                            <h2>Hey there,</h2>
+                        </div>
+                        <div>
+                            <h1 class="mb-10">Create a BenchSafe Account</h1>
+                        </div>
+                    </div>
+                    
+                    {/* register information */}
+                    <form 
+                    className="register-form" onSubmit={handleSubmit}>
+                        <label htmlFor="gymname">Gym Name</label>
+                        <input 
+                            value={gymname} onChange={(e) => setGymName(e.target.value)} 
+                            type="gymname" 
+                            id="gymname" 
+                            placeholder="e.g. Anytime Fitness"/>
+                        <label htmlFor="gymlocation">Gym Location</label>
+                        <input 
+                            value={gymlocation} onChange={(e) => setGymLocation(e.target.value)} 
+                            type="gymlocation" 
+                            id="gymlocation" 
+                            placeholder="e.g. Tampines"/>
+                        <label htmlFor="email">Email</label>
+                        <input 
+                            value = {email} onChange={(e) => setEmail(e.target.value)} 
+                            type = "email" 
+                            placeholder="e.g. anytimefitness@gmail.com" 
+                            id="enail" 
+                            name="email"/>
+                        <label htmlFor="password">Password</label>
+                        <input 
+                            value = {password} onChange={(e) => setPassword(e.target.value)} 
+                            type = "password" 
+                            placeholder="********" 
+                            id="password" 
+                            name="password"/>
+                    </form>
                 </div>
-                <div>
-                    <h1 class="mb-10">Create a BenchSafe Account</h1>
-                </div>
-            </div>
-                
-            <form className="register-form" onSubmit={handleSubmit}>
-                <label htmlFor="gymname">Gym Name</label>
-                <input 
-                    value={gymname} onChange={(e) => setGymName(e.target.value)} 
-                    type="gymname" 
-                    id="gymname" 
-                    placeholder="e.g. Anytime Fitness"/>
-                <label htmlFor="gymlocation">Gym Location</label>
-                <input 
-                    value={gymlocation} onChange={(e) => setGymLocation(e.target.value)} 
-                    type="gymlocation" 
-                    id="gymlocation" 
-                    placeholder="e.g. Tampines"/>
-                <label htmlFor="email">Email</label>
-                <input 
-                    value = {email} onChange={(e) => setEmail(e.target.value)} 
-                    type = "email" 
-                    placeholder="e.g. anytimefitness@gmail.com" 
-                    id="enail" 
-                    name="email"/>
-                <label htmlFor="password">Password</label>
-                <input 
-                    value = {password} onChange={(e) => setPassword(e.target.value)} 
-                    type = "password" 
-                    placeholder="********" 
-                    id="password" 
-                    name="password"/>
-            </form>
-            </div>
 
-            <div>
+                {/* register button */}
                 <div>
-                    <button>Register</button>
+                    <div>
+                        <button>Register</button>
+                    </div>
+                    <div>
+                        <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Already have an account? Login Here</button>
+                    </div>
                 </div>
-                <div>
-                    <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Already have an account? Login Here</button>
-                </div>
+
             </div>
         </div>
       )

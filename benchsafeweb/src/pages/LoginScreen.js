@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-//import cover from '../../public/assets/benchsafe.jpg'
+import Link from 'next/link';
 
 export const LoginScreen = (props) => {
 
@@ -12,23 +12,22 @@ export const LoginScreen = (props) => {
   }
 
   return(
-    <div className="w-full h-screen flex items-start">
-      <div className="relative w-1/2 h-full flex flex-col">
-        <div className="absolute top-[20%] left-[10%] flex flex-col">
-          <h1 className="text-4xl text-white font-bold my-4">BenchSafe</h1>
-        </div>
-        
-        {/* <img src={cover} alt="cover" className="w-full h-full object-cover"/> */}
-      </div>
-      <div>
-        <div className="auth-form-container">
+    <div>
+      <div className="auth-form-container">
+        <div>
+          {/* header */}
           <div>
-          <div>
-            <h2>Hey there,</h2>
-            <h1 className="mb-10">Welcome Back</h1>
+            <div>
+              <h2>Hey there,</h2>
+            </div>
+            <div>
+              <h1 class="mb-10">Welcome Back</h1>
+            </div>
           </div>
           
-          <form className="login-form" onSubmit={handleSubmit}>
+          {/* login information */}
+          <form 
+          className="login-form" onSubmit={handleSubmit}>
             <label htmlFor="email">Email</label>
             <input 
               value = {email} onChange={(e) => setEmail(e.target.value)} 
@@ -44,20 +43,18 @@ export const LoginScreen = (props) => {
               id="password" 
               name="password"/>
           </form>
-          </div>
-
-          <div>
-
-            <div>
-              <button>Login</button>
-            </div>
-            <div>
-              <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register Here</button>
-            </div>
-            
-          </div>
-          
         </div>
+
+        {/* login button */}
+        <div>
+          <Link href="/LoadingScreen">
+            <button className="button">Login</button>
+          </Link>
+          <div>
+            <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register Here</button>
+          </div>
+        </div>
+
       </div>
     </div>
   )

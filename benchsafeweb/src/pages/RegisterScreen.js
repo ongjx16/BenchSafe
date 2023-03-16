@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const RegisterScreen = (props) => {
+export default function RegisterScreen (props){
     
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

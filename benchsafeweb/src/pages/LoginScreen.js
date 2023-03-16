@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Link from 'next/link';
 
-export const LoginScreen = (props) => {
+export default function LoginScreen(props){
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -47,7 +47,7 @@ export const LoginScreen = (props) => {
 
         {/* login button */}
         <div>
-          <Link href="/LoadingScreen">
+          <Link href="/TensorFlow">
             <button className="button">Login</button>
           </Link>
           <div>

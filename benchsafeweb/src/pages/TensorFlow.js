@@ -6,6 +6,7 @@ import React, { useRef, useEffect, useState, useCallback } from "react";
 import Webcam from "react-webcam";
 import cameraIcon from "../assets/Camera.svg"
 import redoIcon from "../assets/Redo.svg"
+import sampleImage from "../assets/ManSample.jpg"
 import Image from 'next/image'
 
 const videoConstraints = {
@@ -16,6 +17,7 @@ const videoConstraints = {
 
 export default function TensorFlow() {
     const camRef = useRef();
+    const imageRef = useRef();
     const canvasRef = useRef();
     const [picture, setPicture] = useState('')
     const capture = useCallback(() => {
@@ -39,44 +41,60 @@ export default function TensorFlow() {
 
     };
 
-    // async function setup() {
-    //     createCanvas(320, 240);
-    //     image = createCapture(IMAGE);
-    //     image.size(320, 240)
-    //     await init();
-    // }
+    // async function detect(detector) {
+    //     if (
+    //         typeof camRef.current !== 'undefined' &&
+    //         camRef.current !== null &&
+    //         camRef.current.video.readyState === 4
+    //     ) {
+    //         // get video properties
+    //         const video = camRef.current.video;
+    //         const videoWidth = camRef.current.video.videoWidth;
+    //         const videoHeight = camRef.current.video.videoHeight;
+    //         console.log(videoWidth)
+    //         console.log(videoHeight)
 
-    // async function getPoses(image) {
-    //     poses = await detector.estimatePoses(image);
-    //     console.log(poses);
-    //     setTimeout(getPoses, 1);
-    // }
+    //         // set video width
+    //         camRef.current.video.width = videoWidth;
+    //         camRef.current.video.height = videoHeight;
+
+    //         // detection happens here
+    //         const poses = await detector.estimatePoses(video);
+    //         console.log(poses)
+    //         //   draw();
+    //         draw(poses);
+
+    //     }
+    // };
+
+    //trying for static image
 
     async function detect(detector) {
         if (
-            typeof camRef.current !== 'undefined' &&
-            camRef.current !== null &&
-            camRef.current.video.readyState === 4
+            typeof imageRef.current !== 'undefined' &&
+            imageRef.current !== null 
         ) {
             // get video properties
-            const video = camRef.current.video;
-            const videoWidth = camRef.current.video.videoWidth;
-            const videoHeight = camRef.current.video.videoHeight;
-            console.log(videoWidth)
-            console.log(videoHeight)
+            const image = imageRef.current.image;
+            const imageWidth = imageRef.current.image.imageWidth;
+            const imageHeight = imageRef.current.image.imageHeight;
+            console.log(imageWidth)
+            console.log(imageHeight)
 
             // set video width
-            camRef.current.video.width = videoWidth;
-            camRef.current.video.height = videoHeight;
+            imageRef.current.image.width = imageWidth;
+            imageRef.current.image.height = imageHeight;
 
             // detection happens here
-            const poses = await detector.estimatePoses(video);
-            console.log(poses)
+            const poses = await detector.estimatePoses(image);
+            console.log(image)
             //   draw();
-            draw(poses);
+            draw(image);
 
         }
     };
+
+
 
     // function drawCanvas(pose, video, videoWidth, videoHeight, canvas){
     //     const ctx = canvas.current.getContext("2d");
@@ -126,8 +144,8 @@ export default function TensorFlow() {
         <div>
             <text>tensorflow page</text>
             {picture == '' ? (
-                <div className = "flex flex-col items-center">
-                    <Webcam
+                <div className="flex flex-col items-center">
+                    {/* <Webcam
                         ref={camRef}
                         audio={false}
                         screenshotFormat="image/jpeg"
@@ -142,22 +160,23 @@ export default function TensorFlow() {
                             zindex: 9,
                             width: 640,
                             height: 360
-                        }} />
-                        <button
+                        }} /> */}
+                    {/* <Image src={sampleImage} /> */}
+                    <button
                         onClick={(e) => {
                             e.preventDefault()
                             capture()
                         }}
                         className="ease-linear bg-gradient-to-r from-purple-200 to-purple-300 w-20 h-20 rounded-full items-center flex justify-center mt-10"
                     >
-                        <Image src={cameraIcon} className="h-6"/>
+                        <Image src={cameraIcon} className="h-6" />
                     </button>
-                    
+
                 </div>
             ) : (
-                <div className = "flex flex-col items-center">
+                <div className="flex flex-col items-center">
                     <img src={picture} />
-                    
+
                     <button
                         onClick={(e) => {
                             e.preventDefault()
@@ -165,12 +184,26 @@ export default function TensorFlow() {
                         }}
                         className="bg-red-500 w-20 h-20 rounded-full items-center flex justify-center mt-10"
                     >
-                        <Image src={redoIcon} className="h-6"/>
+                        <Image src={redoIcon} className="h-6" />
                     </button>
                 </div>
             )}
 
-
+            <Image
+                ref={imageRef}
+                src={sampleImage}
+                //style might have to change to absolute for canvas to work with tensorflow
+                style={{
+                    position: "absolute",
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                    left: 0,
+                    right: 0,
+                    textAlign: "center",
+                    zindex: 9,
+                    width: 640,
+                    height: 360
+                }} />
 
             <canvas
                 ref={canvasRef}

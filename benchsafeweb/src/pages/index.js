@@ -18,11 +18,13 @@ export default function Home() {
           BenchSafe App
         </text>
         <div className = "w-screen flex justify-center" >
-          <Button text="niunj"/>
+          <Button text="BenchSafe App"/>
         </div>
         <div className = "text-red-500 flex flex-col">
           <Link href="/LoginScreen">Login Page</Link>
+          <Link href="/RegisterScreen">Register Page</Link>
           <Link href="/TensorFlow">Tensor Flow Page</Link>
+          <Link href="/LoadingScreen">Loading Page</Link>
         </div>
       </div>
     </>

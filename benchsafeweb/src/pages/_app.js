@@ -1,7 +1,24 @@
+import React, { useState } from "react";
 import '@/styles/globals.css'
+import { LoginScreen } from "./LoginScreen";
+import { RegisterScreen } from "./RegisterScreen";
+import { LoadingScreen } from "./LoadingScreen";
+import { Home } from "./index";
 
-export default function App({ Component, pageProps }) {
+function App() {
+  const [currentForm, setCurrentForm] = useState('login');
+
+  const toggleForm = (formName) => {
+    setCurrentForm(formName);
+  }
+
   return (
-      <Component {...pageProps} />
-  )
+    <div className='App'>
+      {
+        currentForm === "login" ? <LoginScreen onFormSwitch={toggleForm} /> : <RegisterScreen onFormSwitch={toggleForm} />
+      }
+    </div>
+  );
 }
+
+export default App;

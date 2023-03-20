@@ -20,14 +20,14 @@
   }
 }
 
-.App {
+/* .App {
   display: flex;
   height: 100vh;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   background-image: linear-gradient(79deg, #fffdd0 100%);
-}
+} */
 
 .auth-form-container {
   display: flex;
@@ -37,18 +37,23 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
-  width: 100%;
+  max-width: 36rem;
 }
 
-/* @media screen and (min-width: 600px){
-  .auth-form-container{
-  position: relative; 
-  width: 50%; 
-  height: 100vh;
-  display: flex; 
-  flex-direction: column;
+/* mobile devices */
+@media screen and (min-width: 600px){
+    .auth-form-container {
+        display: flex;
+        font-weight: 200;
+        font-family: poppins;
+        text-align: center;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100vh;
+        width: 100%;
+        padding: 1rem;
+      }
   }
-} */
 
 .login-form, .register-form {
   display: flex;

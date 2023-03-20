@@ -1,7 +1,7 @@
 import React from "react";
 import Link from 'next/link';
 
-function LandingPage() {
+function AddNewBranch() {
     return(
         <div>
             <h1>LandingPage</h1>
@@ -9,4 +9,4 @@ function LandingPage() {
     )
 };
 
-export default LandingPage;
+export default AddNewBranch;

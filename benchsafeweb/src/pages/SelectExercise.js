@@ -1,12 +1,12 @@
 import React from "react";
 import Link from 'next/link';
 
-function LandingPage() {
+function SelectExercise() {
     return(
         <div>
-            <h1>LandingPage</h1>
+            <h1>SelectExercise</h1>
         </div>
     )
 };
 
-export default LandingPage;
+export default SelectExercise;

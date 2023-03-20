@@ -1,18 +1,45 @@
 import React, { useState } from "react";
 import Link from 'next/link';
+//import { useNavigate } from "react-router-dom";
+//import { useAuth } from "../contexts/AuthContext";
 
-export default function LoginScreen(props){
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+function LoginScreen(){
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(email);
-  }
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  // const navigate = useNavigate();
+  // const { login } = useAuth()
+
+
+  const signin = async () => {
+    try {
+      const user = await login(
+        loginEmail,
+        loginPassword
+      );
+      console.log(user);
+      navigate("/");
+    } catch (error) {
+      console.log(error.message);
+      Store.addNotification({
+        title: "Error",
+        message: error.message,
+        type: "danger",
+        insert: "top",
+        container: "top-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 4000,
+          onScreen: true
+        }
+      });
+    }
+  };
 
   return(
-    <div>
+    <div className="flex flex-row justify-center">
       <div className="auth-form-container">
         <div>
           {/* header */}
@@ -27,31 +54,35 @@ export default function LoginScreen(props){
           
           {/* login information */}
           <form 
-          className="login-form" onSubmit={handleSubmit}>
+          className="login-form">
             <label htmlFor="email">Email</label>
             <input 
-              value = {email} onChange={(e) => setEmail(e.target.value)} 
+              onChange={(event) => {setLoginEmail(event.target.value);}}
               type = "email" 
               placeholder="e.g. anytimefitness@gmail.com" 
               id="enail" 
               name="email"/>
+
             <label htmlFor="password">Password</label>
             <input 
-              value = {password} onChange={(e) => setPassword(e.target.value)} 
+              onChange={(event) => {setLoginPassword(event.target.value);}}
               type = "password" 
               placeholder="********" 
               id="password" 
               name="password"/>
+
           </form>
         </div>
 
         {/* login button */}
         <div>
-          <Link href="/TensorFlow">
+          <Link href="/LandingPage">
             <button className="button">Login</button>
           </Link>
           <div>
-            <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register Here</button>
+            <Link href="/RegisterScreen">
+              <button className="link-btn">Don't have an account? Register Here</button>
+            </Link>
           </div>
         </div>
 
@@ -59,3 +90,5 @@ export default function LoginScreen(props){
     </div>
   )
 }
+
+export default LoginScreen;

@@ -1,19 +1,49 @@
 import React, { useState } from "react";
+import Link from 'next/link';
 
-export default function RegisterScreen (props){
+function RegisterScreen (){
     
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [gymname, setGymName] = useState('');
-    const [gymlocation, setGymLocation] = useState('');
+  const [gymname, setGymName] = useState("");
+  const [gymlocation, setGymLocation] = useState("");
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [cfmPassword, cfmRegisteredPassword] = useState("");
+  const [error, setError] = useState("");
+  //const { signup } = useAuth()
+  //const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(email);
+  const register = async () => {
+    if (registerPassword !== cfmPassword) {
+      return setError("Passwords do not match")
     }
+
+    try {
+      const user = await signup(
+        registerEmail,
+        registerPassword
+      );
+      console.log(user);
+      navigate("/Preferences");
+    } catch (error) {
+      setError(error.message);
+      Store.addNotification({
+        title: "Error",
+        message: error.message,
+        type: "danger",
+        insert: "top",
+        container: "top-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 4000,
+          onScreen: true
+        }
+      });
+    }
+  };
     
     return(
-        <div>git 
+        <div className="flex flex-row justify-center">
             <div className="auth-form-container">
                 <div>
                     {/* header */}
@@ -28,43 +58,60 @@ export default function RegisterScreen (props){
                     
                     {/* register information */}
                     <form 
-                    className="register-form" onSubmit={handleSubmit}>
+                    className="register-form">
                         <label htmlFor="gymname">Gym Name</label>
                         <input 
-                            value={gymname} onChange={(e) => setGymName(e.target.value)} 
+                            onChange={(event) => {setGymName(event.target.value);}}
                             type="gymname" 
                             id="gymname" 
-                            placeholder="e.g. Anytime Fitness"/>
+                            placeholder="e.g. Anytime Fitness"
+                            name="gymname"/>
+
                         <label htmlFor="gymlocation">Gym Location</label>
                         <input 
-                            value={gymlocation} onChange={(e) => setGymLocation(e.target.value)} 
+                            onChange={(event) => {setGymLocation(event.target.value);}}
                             type="gymlocation" 
                             id="gymlocation" 
-                            placeholder="e.g. Tampines"/>
+                            placeholder="e.g. Tampines"
+                            name="gymlocation"/>
+
                         <label htmlFor="email">Email</label>
                         <input 
-                            value = {email} onChange={(e) => setEmail(e.target.value)} 
+                            onChange={(event) => {setRegisterEmail(event.target.value);}}
                             type = "email" 
                             placeholder="e.g. anytimefitness@gmail.com" 
                             id="enail" 
                             name="email"/>
+
                         <label htmlFor="password">Password</label>
                         <input 
-                            value = {password} onChange={(e) => setPassword(e.target.value)} 
+                            onChange={(event) => {setRegisterPassword(event.target.value);}}
                             type = "password" 
                             placeholder="********" 
                             id="password" 
                             name="password"/>
+
+                        <label htmlFor="password">Confirm Password</label>
+                        <input
+                            onChange={(event) => {cfmRegisteredPassword(event.target.value);}}
+                            type = "cfmpassword"
+                            placeholder="********"
+                            id="cfmpassword"
+                            name="cfmpassword"/>
                     </form>
                 </div>
 
                 {/* register button */}
                 <div>
                     <div>
-                        <button>Register</button>
+                        <Link href="/LoginScreen">
+                            <button className="button">Register</button>
+                        </Link>
                     </div>
                     <div>
-                        <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Already have an account? Login Here</button>
+                        <Link href="/LoginScreen">
+                            <button className="link-btn">Already have an account? Login Here</button>
+                        </Link>
                     </div>
                 </div>
 
@@ -72,3 +119,5 @@ export default function RegisterScreen (props){
         </div>
       )
 }
+
+export default RegisterScreen;

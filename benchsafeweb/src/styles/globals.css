@@ -54,7 +54,7 @@
       }
   }
 
-.login-form, .register-form {
+.login-form, .register-form, .addbench-form {
   display: flex;
   font-weight: 200;
   font-family: poppins; 
@@ -67,8 +67,6 @@ label {
   padding: 0.25rem 0;
 }
 
-/* class="text-left p-1" */
-
 input {
   margin: 0.5rem 0;
   padding: 1rem;
@@ -76,8 +74,6 @@ input {
   border-radius: 10px;
   background-color:whitesmoke;
 }
-
-/* class="m-1 p-4 border-none rounded-xl bg-whitesmoke" */
 
 button {
   border: none;

@@ -25,9 +25,10 @@ export default function Home() {
           <Link href="/RegisterScreen">Register Page</Link>
           <Link href="/TensorFlow">Tensor Flow Page</Link>
           <Link href="/LandingPage">Landing Page</Link>
-          <Link href="/AddNewBench">Add New Page</Link>
+          <Link href="/AddNewBench">Add New Bench Page</Link>
           <Link href="/SelectExercise">Select Exercise Page</Link>
           <Link href="/LaserMarking">Bench-LaserMarking Page</Link>
+          <Link href="/Exit">Exit Page</Link>
         </div>
       </div>
     </>

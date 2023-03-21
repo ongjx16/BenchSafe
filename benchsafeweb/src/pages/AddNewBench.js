@@ -35,12 +35,14 @@ return(
           </div>
           
           {/* Bench information */}
+
+          {/* Yet to add icons */}
           <div className="my-5">
             <h2>Enter Bench Details</h2>
           </div>
           <form 
           className="addbench-form">
-            
+
             <input 
             onChange={(event) => {setBenchName(event.target.value);}}
             type = "Bench Name" 

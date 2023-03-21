@@ -3,12 +3,10 @@ import Link from 'next/link';
 import Image from "next/image";
 import BackButton from "../assets/BackButton.svg";
 import Detail from "../assets/Detail.svg";
-import FlatBenchPress from "../assets/FlatBenchPress.svg";
-import InclineBenchPress from "../assets/InclineBenchPress.svg";
 
-function SelectExercise() {
+function Exit() {
     return(
-        <div className="flex flex-row justify-center">
+    <div className="flex flex-row justify-center">
         <div className="auth-form-container">
             <div>
 
@@ -29,22 +27,29 @@ function SelectExercise() {
             
             {/* Bench information */}
             <div className="my-5">
-                <h2>Select Your Exercise</h2>
+                <h2>Thank you for using BenchSafe!</h2>
             </div>
-                <div className="flex flex-row">
-                    <Image src={FlatBenchPress} alt="FlatBenchPress" className=""/>
-                    <Image src={InclineBenchPress} alt="InclineBenchPress" className="m-1"/>
+
+            <div className="flex flex-col justify-center h-full px-6">
+                <div>
+                    <h2>Happy Benching!</h2>
+                </div>
+
+                <div>
+                    <h3>Ensure that you are seated as close as possible to the inner edge of the seat</h3>
+                </div>
+                    
                 </div>
             </div>
 
             {/* Add button */}
-            <Link href="/LaserMarking">
-                <button className="button">Next</button>
+            <Link href="/LoginScreen">
+                <button className="button">Exit</button>
             </Link>
 
         </div>
-        </div>
+    </div>
     )
 };
 
-export default SelectExercise;
+export default Exit;

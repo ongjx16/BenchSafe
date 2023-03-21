@@ -34,7 +34,7 @@ function LandingPage() {
                 <div className="flex justify-center h-full">
                     <div>
                         {/* Flat Bench */}
-                        <div class="flex justify-center">
+                        <div class="flex justify-center m-3">
                             <div
                                 class="block max-w-sm rounded-lg bg-white shadow-lg">
                                 <a href="#!" data-te-ripple-init data-te-ripple-color="light">
@@ -49,8 +49,14 @@ function LandingPage() {
                                     Bench 1
                                 </h5>
                                 <p class="mb-4 text-base text-neutral-600">
+                                    Bench Body Length: 120cm <br></br>
+                                    Machine Tilt Angle: 0 degree
+                                </p>
+
+                                <p class="mb-4 text-base text-neutral-600">
                                     Rogue’s fully updated Westside Bench is a heavy-duty juggernaut inspired by Westside Barbell’s original designs.
                                 </p>
+            
                                 <Link href="/EnterHeight">
                                     <button className="button">Select</button>
                                 </Link>
@@ -75,8 +81,13 @@ function LandingPage() {
                                     Bench 2
                                 </h5>
                                 <p class="mb-4 text-base text-neutral-600">
+                                    Bench Body Length: 130cm <br></br>
+                                    Machine Tilt Angle: 30 degrees
+                                </p>
+                                <p class="mb-4 text-base text-neutral-600">
                                     Made in the USA from 3x3" 11-Gauge Steel, the Monster Westside Bench stands among the most versatile, heavy-duty, uncompromising bench racks ever built
                                 </p>
+                                
                                 <Link href="/EnterHeight">
                                     <button className="button">Select</button>
                                 </Link>

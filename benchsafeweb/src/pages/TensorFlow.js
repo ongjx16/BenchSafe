@@ -1,27 +1,37 @@
 //import React, { useRef, useEffect, useState, useCallback } from "react";
-import Webcam from "react-webcam";
 import cameraIcon from "../assets/Camera.svg"
 import redoIcon from "../assets/Redo.svg"
-import sampleImage from "../assets/ManSample.jpg";
 import "@tensorflow/tfjs-backend-webgl";
-import adapter from 'webrtc-adapter';
-import { useRouter } from 'next/router'
-
-
-
+import { useRouter} from 'next/router'
+import Router from "next/router";
+import Profile from "../assets/Profile.svg";
+import Home from "../assets/Home.svg";
+import BackButton from "../assets/BackButton.svg";
+import Submit from "../assets/Submit.svg";
+import Detail from "../assets/Detail.svg";
 import { useState, useEffect, useRef } from "react";
 import * as posenet from '@tensorflow-models/posenet';
 import Image from "next/image";
+import Link from 'next/link';
 //import { Image } from 'canvas';
 
 export default function TensorFlow() {
+
+
+  const [sHeight, setSHeight] = useState(null);
+  const [sWidth, setSWidth] = useState(null);
+
+  const [ankleH, setAnkleH] = useState(null); 
+   const [eyesH, setEyesH] = useState(null); 
+   const [hipsH, setHipsH] = useState(null); 
+   const [shoulderH, setShoulderH] = useState(null); 
 
   const pHeight = 156;
 
   const router = useRouter()
   const tfcanvasRef = useRef(null);
   const canvasRef = useRef(null);
-  const [poses, setPoses] = useState();
+  const [poses, setPoses] = useState(null);
 
   const camera = useRef(null);
   const [image, setImage] = useState(null);
@@ -33,6 +43,21 @@ export default function TensorFlow() {
   const [videoDem, handleVideoDem] = useState({ w: 0, h: 0 });
   const [cameraFacingMode, handleCameraFacingMode] = useState('environment');
   const [imageData, handleImageData] = useState('');
+
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     //setSHeight(window.innerHeight);
+  //     //setSWidth(screen.width);
+  //     //setSWidth(window.innerWidth);
+  //     console.log("height");
+  //     console.log(sHeight);
+  //   };
+  //   handleResize(); // Set initial value
+  //   window.addEventListener("resize", handleResize);
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
 
 
   //average eye height-to-body height ratio of approximately 1:1.67 for males and 1:1.62 for females.
@@ -54,8 +79,8 @@ export default function TensorFlow() {
       try {
         const constraint = {
           video: {
-            width: { ideal: 375 },
-            height: { ideal: 750 },
+            width: { ideal: 390 },
+            height: { ideal: 600 },
             facingMode: cameraFacingMode,
           },
           audio: false,
@@ -67,8 +92,8 @@ export default function TensorFlow() {
           const { clientLeft, clientTop, videoWidth, videoHeight } = video;
           handleVideoDem({ w: videoWidth, h: videoHeight });
           canvas.style.position = 'absolute';
-          canvas.style.left = clientLeft.toString();
-          canvas.style.top = clientTop.toString();
+          // canvas.style.left = clientLeft.toString();
+          // canvas.style.top = clientTop.toString();
           canvas.setAttribute('width', videoWidth.toString());
           canvas.setAttribute('height', videoHeight.toString());
           video.play();
@@ -233,13 +258,10 @@ export default function TensorFlow() {
 
   function calcHeight(pHeight, poses) {
     const pts = poses.keypoints;
-    const ankleH = (pts[15].position.y + pts[16].position.y) / 2;
-    const eyesH = (pts[1].position.y + pts[2].position.y) / 2;
-    const hipsH = (pts[12].position.y + pts[11].position.y) / 2;
-    const shoulderH = (pts[5].position.y + pts[6].position.y) / 2;
-    const n = pHeight / (ankleH - eyesH);
-    const ans = (n * (hipsH - shoulderH)) - 20;
-    console.log(ans);
+    setAnkleH((pts[15].position.y + pts[16].position.y) / 2);
+    setEyesH((pts[1].position.y + pts[2].position.y) / 2);
+    setHipsH ((pts[12].position.y + pts[11].position.y) / 2);
+    setShoulderH ((pts[5].position.y + pts[6].position.y) / 2);
   }
 
   return (
@@ -254,40 +276,100 @@ export default function TensorFlow() {
 
 
     // </div>
-    <div>
-      <video></video>
-      <canvas ref={canvasRef}></canvas>
-      <canvas ref={tfcanvasRef} className="absolute inset-0" />
+    <div className="flex flex-col min-h-screen">
 
-      {/* <button onClick={captureImage}>Capture Image</button> */}
-      {imageData == '' ? (
-        <div className="flex flex-col items-center">
-          <button
-            onClick={(e) => {
-              e.preventDefault()
-              captureImage()
-            }}
-            className="ease-linear bg-gradient-to-r from-purple-200 to-purple-300 w-20 h-20 rounded-full items-center flex justify-center mt-10"
-          >
-            <Image src={cameraIcon} className="h-6" />
-          </button>
+      {/* Header design */}
+      <header >
+        <div className="grow-0 h-14 flex flex-row mt-auto py-5 justify-between mx-5">
+          <div className="flex justify-self-start col-span-1">
+            <Link href="/LandingPage">
+              <Image src={BackButton} alt="BackButton" className="m-1" width={40} height={40} />
+            </Link>
+          </div>
 
+          <h1 className="flex justify-center col-span-2 py-2">Bench 1</h1>
+
+          <div className="flex justify-self-end col-span-1">
+            <Image src={Detail} alt="Detail" className="m-1" width={40} height={40} />
+          </div>
         </div>
-      ) : (
-        <div className="flex flex-col items-center">
-          <button
-            onClick={(e) => {
-              e.preventDefault()
-              router.reload()
-            }}
-            className="bg-red-500 w-20 h-20 rounded-full items-center flex justify-center mt-10"
-          >
-            <Image src={redoIcon} className="h-6" />
-          </button>
+
+        <div className="mt-5">
+          <h2 className="flex justify-center mb-1">Welcome User!</h2>
+          <h3 className="flex justify-center text-center mx-5">Snap a photo to calibrate your body length.</h3>
+          <text className="flex justify-center text-center mt-4 mb-2 mx-5">Please ensure your body is in the frame!</text>
         </div>
-      )}
-      <button onClick={switchCameraFacingMode}>Switch Camera</button>
+      </header>
+
+      <div className="w-screen flex flex-row justify-center">
+        <video className = "absolute"></video>
+        <canvas ref={canvasRef} className = "absolute"></canvas>
+        <canvas ref={tfcanvasRef} className="absolute" />
+      </div>
+
+
+
+
+      {/* <button onClick={switchCameraFacingMode}>Switch Camera</button> */}
+      {/* Bottom navigation bar design*/}
+      <footer className="flex flex-row justify-center w-screen h-24 mt-auto">
+        <div className=" bg-slate-100 rounded min-h-fit min-w-fit w-screen drop-shadow-md inline-block flex flex-row justify-center">
+
+          {/* take pic */}
+          <div className="flex justify-around">
+            {imageData == '' ? (
+              <div className="flex flex-col items-center">
+                <button
+                  onClick={(e) => {
+                    e.preventDefault()
+                    captureImage()
+                  }}
+                  className="ease-linear bg-gradient-to-r from-purple-200 to-purple-300 w-20 h-20 rounded-full items-center flex justify-center "
+                >
+                  <Image src={cameraIcon} className="h-6" />
+                </button>
+
+              </div>
+            ) : (
+              <div className="flex flex-row justify-between">
+                <button
+                  onClick={(e) => {
+                    e.preventDefault()
+                    router.reload()
+                  }}
+                  className="bg-red-500 w-20 h-20 rounded-full items-center flex justify-center mx-10"
+                >
+                  <Image src={redoIcon} className="h-6" />
+                </button>
+                {poses==null?(<div></div>) : (
+                  <button
+                  onClick={(e) => {
+                    //submit values
+                    Router.push({
+                      pathname: '/EnterHeight',
+                      query: { ankleH: ankleH, eyesH: eyesH, hipsH: hipsH , shoulderH: shoulderH},
+                    })
+                  
+                  }}
+                  className="ease-linear bg-gradient-to-r from-purple-200 to-purple-300 w-20 h-20 rounded-full items-center flex justify-center mx-10"
+                >
+                  <Image src={Submit} className="h-6" />
+                </button>
+                )}
+                
+              </div>
+            )}
+          </div>
+
+          {/* Profile
+          <div className="flex justify-center">
+            <Image src={Profile} alt="Profile" width={40} height={40} />
+          </div> */}
+        </div>
+      </footer>
     </div>
+
+
 
   )
 }

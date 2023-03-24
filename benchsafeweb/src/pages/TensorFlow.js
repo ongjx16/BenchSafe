@@ -260,7 +260,7 @@ export default function TensorFlow() {
     const pts = poses.keypoints;
     setAnkleH((pts[15].position.y + pts[16].position.y) / 2);
     setEyesH((pts[1].position.y + pts[2].position.y) / 2);
-    setHipsH ((pts[12].position.y + pts[11].position.y) / 2);
+    //setHipsH ((pts[12].position.y + pts[11].position.y) / 2);
     setShoulderH ((pts[5].position.y + pts[6].position.y) / 2);
   }
 
@@ -347,7 +347,7 @@ export default function TensorFlow() {
                     //submit values
                     Router.push({
                       pathname: '/EnterHeight',
-                      query: { ankleH: ankleH, eyesH: eyesH, hipsH: hipsH , shoulderH: shoulderH},
+                      query: { ankleH: ankleH, eyesH: eyesH, shoulderH: shoulderH},
                     })
                   
                   }}

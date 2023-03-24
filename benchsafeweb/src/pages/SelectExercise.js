@@ -20,6 +20,7 @@ function SelectExercise() {
     const calculateFlat = async (e) => {
         //e.preventDefault();
         try {
+            
             // const res = await fetch(`/angle-for-flat-bench?nipple_height=${router.query.nipHipH}`);
             const res = await fetch(`http://172.20.10.5:5000/angle-for-flat-bench?nipple_height=1.2`);
 

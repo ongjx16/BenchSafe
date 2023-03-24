@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { useLocation, useNavigate } from "react-router-dom";
+//import { useLocation, useNavigate } from "react-router-dom";
 import BackButton from "../assets/BackButton.svg";
 import Detail from "../assets/Detail.svg";
 import Image from "next/image";

@@ -15,6 +15,25 @@ function SelectExercise() {
     const router = useRouter();
     console.log(router.query.nipHipH)
     const [exercise, setExercise] = useState('')
+    const [results, setResults] = useState([]);
+
+    const calculateFlat = async (e) => {
+        //e.preventDefault();
+        try {
+            // const res = await fetch(`/angle-for-flat-bench?nipple_height=${router.query.nipHipH}`);
+            const res = await fetch(`http://172.20.10.5:5000/angle-for-flat-bench?nipple_height=1.2`);
+
+            // const data = await res.json();
+            // setResults(data.results);
+            console.log(res);
+
+        } catch (error) {
+            console.log('An error occurred. Please try again later.');
+            setResults([]);
+        }
+    };
+
+
     return (
         <div className="flex flex-row justify-center w-screen">
             <div className="auth-form-container">
@@ -41,45 +60,57 @@ function SelectExercise() {
                     </div>
                     <div className="flex flex-row items-center justify-center mx-10">
                         <div>
-                        {exercise == "flat" ? (
-                        <Image src={FlatBenchPress} alt="FlatBenchPress"
-                            className="h-38"
-                        />)
-                            :
-                            (
-                                <Image src={FlatDeactivated} alt="FlatBenchPress"
+                            {exercise == "flat" ? (
+                                <Image src={FlatBenchPress} alt="FlatBenchPress"
                                     className="h-38"
-                                    onClick={(e) => {
-                                        setExercise("flat");
-                                    }} />
-                            )}
+                                />)
+                                :
+                                (
+                                    <Image src={FlatDeactivated} alt="FlatBenchPress"
+                                        className="h-38"
+                                        onClick={(e) => {
+                                            setExercise("flat");
+                                        }} />
+                                )}
                         </div>
                         <div>
-                        {exercise == "inclined" ? (
-                            <Image src={InclinedActivated} alt="InclineBenchPress" className="h-60"
-                            />
-                        ) : (
-                            <Image src={InclineBenchPress} alt="InclineBenchPress" className=" h-60"
-                                onClick={(e) => {
-                                    setExercise("inclined");
-                                }}
-                            />
-                        )}
+                            {exercise == "inclined" ? (
+                                <Image src={InclinedActivated} alt="InclineBenchPress" className="h-60"
+                                />
+                            ) : (
+                                <Image src={InclineBenchPress} alt="InclineBenchPress" className=" h-60"
+                                    onClick={(e) => {
+                                        setExercise("inclined");
+                                    }}
+                                />
+                            )}
                         </div>
 
-                        
+
 
                     </div>
                 </div>
 
                 {/* Add button */}
                 <button className="button"
-                    onClick={(e) => {
+                    onClick={async (e) => {
                         //submit values
-                        Router.push({
-                            pathname: '/LaserMarking',
-                            query: { nipHipH: router.query.nipHipH, exercise: exercise },
-                        })
+                        calculateFlat();
+
+                        // if (exercise == "flat") {
+                        //     await calculateFlat();
+                        // }
+                        // else if (exercise == "flat") {
+                        //     //calculate inclined
+                        // }
+                        // else {
+                        //     //
+                        // }
+
+                        // Router.push({
+                        //     pathname: '/LaserMarking',
+                        //     query: { nipHipH: router.query.nipHipH, exercise: exercise },
+                        // });
 
                     }}
                 >Next</button>

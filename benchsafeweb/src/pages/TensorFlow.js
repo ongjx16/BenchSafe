@@ -86,6 +86,7 @@ export default function TensorFlow() {
           audio: false,
         };
         const stream = await navigator.mediaDevices.getUserMedia(constraint);
+        print(stream)
         video.setAttribute('playsinline', 'true');
         video.srcObject = stream;
         video.onloadedmetadata = () => {

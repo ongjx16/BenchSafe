@@ -3,8 +3,7 @@ import Link from 'next/link';
 import Home from "../assets/Home.svg";
 import Image from "next/image";
 import Location from "../assets/Location.svg";
-import AddBench from "../assets/AddBench.svg";
-import Profile from "../assets/Profile.svg";
+import logout1 from "../assets/logout1.svg";
 import FlatBenchPress from "../images/FlatBenchPress.jpg";
 import InclineBenchPress from "../images/InclineBenchPress.jpg";
 
@@ -100,20 +99,15 @@ function UserLandingPage() {
 
             {/* Bottom navigation bar design*/}
             <footer className="flex flex-row justify-center w-screen h-24">
-                    <div className="grid grid-cols-3 bg-slate-100 rounded min-h-fit min-w-fit w-screen drop-shadow-md inline-block">
+                    <div className="grid grid-cols-2 bg-slate-100 rounded min-h-fit min-w-fit w-screen drop-shadow-md inline-block">
                         {/* Home */}
                         <Link href="/LandingPage" className="flex justify-center">
                             <Image src={Home} alt="Home" width={40} height={40} />
                         </Link>
 
-                        {/* Add Bench */}
-                        <Link href="/AddNewBench" className="flex justify-center">
-                            <Image src={AddBench} alt="AddBench" width={120} height={120} />
-                        </Link>
-
                         {/* Profile */}
-                        <Link href="/LandingPage" className="flex justify-center">
-                            <Image src={Profile} alt="Profile" width={40} height={40} />
+                        <Link href="/LoginScreen" className="flex justify-center">
+                            <Image src={logout1} alt="logout" width={40} height={40} />
                         </Link>
                     </div>
             </footer>

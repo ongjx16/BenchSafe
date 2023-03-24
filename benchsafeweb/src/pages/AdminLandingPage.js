@@ -8,7 +8,7 @@ import Profile from "../assets/Profile.svg";
 import FlatBenchPress from "../images/FlatBenchPress.jpg";
 import InclineBenchPress from "../images/InclineBenchPress.jpg";
 
-function LandingPage() {
+function AdminLandingPage() {
     return(
         <div className="flex flex-col h-screen justify-between w-screen">
 
@@ -58,8 +58,12 @@ function LandingPage() {
                                 </p>
             
                                 <Link href="/EnterHeight">
-                                    <button className="button">Select</button>
+                                    <button className="button">Select Bench</button>
                                 </Link>
+
+                                <Link href="/AddNewBench">
+                                    <button className="button">Edit Bench</button>
+                                </Link>                                
                                 </div>
                             </div>
                         </div>
@@ -89,8 +93,12 @@ function LandingPage() {
                                 </p>
                                 
                                 <Link href="/EnterHeight">
-                                    <button className="button">Select</button>
+                                    <button className="button">Select Bench</button>
                                 </Link>
+
+                                <Link href="/AddNewBench">
+                                    <button className="button">Edit Bench</button>
+                                </Link>                                
                                 </div>
                             </div>
                         </div>
@@ -121,4 +129,4 @@ function LandingPage() {
     )
 };
 
-export default LandingPage;
+export default AdminLandingPage;

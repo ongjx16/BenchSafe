@@ -67,7 +67,7 @@ function EnterHeight() {
                             // <Link 
                             Router.push({
                                 pathname: '/SelectExercise',
-                                query: { nipHipH: finalH },
+                                query: { hipfeetH: finalH },
                             })
                         }}
                     >Next</button>

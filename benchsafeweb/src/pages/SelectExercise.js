@@ -13,16 +13,17 @@ import Router from "next/router";
 function SelectExercise() {
 
     const router = useRouter();
-    console.log(router.query.nipHipH)
+    console.log(router.query.hipfeetH)
     const [exercise, setExercise] = useState('')
     const [results, setResults] = useState([]);
 
     const calculateFlat = async (e) => {
         //e.preventDefault();
         try {
-            
-            // const res = await fetch(`/angle-for-flat-bench?nipple_height=${router.query.nipHipH}`);
-            const res = await fetch(`http://172.20.10.5:5000/angle-for-flat-bench?nipple_height=1.2`);
+           // const hip = router.query.hipfeetH;
+            const hip = 1.2;
+            const res = await fetch(`/angle-for-flat-bench?nipple_height=${hip}`);
+            //const res = await fetch(`http://172.20.10.5:5000/angle-for-flat-bench?nipple_height=1.2`);
 
             // const data = await res.json();
             // setResults(data.results);

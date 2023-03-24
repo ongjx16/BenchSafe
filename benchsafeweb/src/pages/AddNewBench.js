@@ -64,6 +64,13 @@ return(
               id="Machine Tilt Angle (in degrees)" 
               name="Machine Tilt Angle (in degrees)"/>
 
+            <input 
+              onChange={(event) => {addDescription(event.target.value);}}
+              type = "Add Description" 
+              placeholder="Add Description" 
+              id="Add Description" 
+              name="Add Description"/>
+
           </form>
         </div>
 

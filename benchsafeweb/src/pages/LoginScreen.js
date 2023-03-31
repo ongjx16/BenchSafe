@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import Link from 'next/link';
 import {signInWithEmailAndPassword } from "firebase/auth";
 import {auth, db} from "../../firebase-config";
+import { useRouter } from 'next/router';
+import Router from "next/router";
 
 
 function LoginScreen() {
   
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const [loginSuccess, setLoginSuccess] = useState (null);
+  const [user, setUser] = useState(null);
 
   const login  = async(email, password) =>{
     console.log(email)
@@ -15,11 +19,19 @@ function LoginScreen() {
     await signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in 
-      const user = userCredential.user;
+      setLoginSuccess (true);
+      setUser(userCredential.user);
+      console.log(userCredential.user);
       console.log("login successful")
+      Router.push({
+        pathname: '/UserLandingPage',
+        query: { user: user },
+      })
+
       // ...
     })
     .catch((error) => {
+      setLoginSuccess(false);
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorMessage);
@@ -60,6 +72,8 @@ function LoginScreen() {
               name="password" />
 
           </form>
+          {loginSuccess == false?
+          <text className = "text-red-500">Incorrect password, try again!</text>:<div></div>}
         </div>
 
         {/* login button */}

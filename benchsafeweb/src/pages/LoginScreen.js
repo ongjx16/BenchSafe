@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Link from 'next/link';
 import {signInWithEmailAndPassword } from "firebase/auth";
 import {auth, db} from "../../firebase-config";
-import { useRouter } from 'next/router';
 import Router from "next/router";
 
 

@@ -16,7 +16,7 @@ import Link from 'next/link';
 //import { Image } from 'canvas';
 
 export default function TensorFlow() {
-
+  const [inFrame, setInFrame] = useState(null);
 
   const [sHeight, setSHeight] = useState(null);
   const [sWidth, setSWidth] = useState(null);
@@ -25,8 +25,6 @@ export default function TensorFlow() {
    const [eyesH, setEyesH] = useState(null); 
    const [hipsH, setHipsH] = useState(null); 
    const [shoulderH, setShoulderH] = useState(null); 
-
-  const pHeight = 156;
 
   const router = useRouter()
   const tfcanvasRef = useRef(null);
@@ -86,7 +84,7 @@ export default function TensorFlow() {
           audio: false,
         };
         const stream = await navigator.mediaDevices.getUserMedia(constraint);
-        print(stream)
+        //print(stream)
         video.setAttribute('playsinline', 'true');
         video.srcObject = stream;
         video.onloadedmetadata = () => {
@@ -169,12 +167,20 @@ export default function TensorFlow() {
 
     //htmlImage.onload = async () => {
     if (imageData != null) {
-      console.log("image loaded")
+      console.log("image loaded");
       console.log(imageData);
 
       const pose = await estimatePose(imageData);
       console.log(pose);
+      if (pose.keypoints[15].score<0.9){
+        setInFrame(0);
+      }
+      else{
+        setInFrame(1);
+      }
+      
       const sPose = await setPoses(pose);
+      
 
     }
 
@@ -199,6 +205,8 @@ export default function TensorFlow() {
     // console.log(poses.length)
     if (tfcanvasRef && poses) {
       console.log("tfcanvas and poses ok")
+      console.log("inFrame");
+      console.log(inFrame);
       const tfcanvas = tfcanvasRef.current;
       tfcanvas.width = canvasRef.current.width;
       tfcanvas.height = canvasRef.current.height;
@@ -206,7 +214,7 @@ export default function TensorFlow() {
       drawKeypoints(poses.keypoints, 0.2, ctx);
       drawSkeleton(poses.keypoints, 0.2, ctx);
       console.log("calculating length");
-      calcHeight(pHeight, poses);
+      //calcHeight(pHeight, poses);
     }
 
 
@@ -283,9 +291,7 @@ export default function TensorFlow() {
       <header >
         <div className="grow-0 h-14 flex flex-row mt-auto py-5 justify-between mx-5">
           <div className="flex justify-self-start col-span-1">
-            <Link href="/LandingPage">
-              <Image src={BackButton} alt="BackButton" className="m-1" width={40} height={40} />
-            </Link>
+              <Image src={BackButton} alt="BackButton" className="m-1" width={40} height={40} onClick={() => router.back()}/>
           </div>
 
           <h1 className="flex justify-center col-span-2 py-2">Bench 1</h1>
@@ -299,6 +305,8 @@ export default function TensorFlow() {
           <h2 className="flex justify-center mb-1">Welcome User!</h2>
           <h3 className="flex justify-center text-center mx-5">Snap a photo to calibrate your body length.</h3>
           <text className="flex justify-center text-center mt-4 mb-2 mx-5">Please ensure your body is in the frame!</text>
+
+          {inFrame == 0?<text className ="flex justify-center text-center mt-4 mb-2 mx-5 text-red-500" > Body out of frame! Please retake photo.</text>: <div></div>}
         </div>
       </header>
 
@@ -307,7 +315,6 @@ export default function TensorFlow() {
         <canvas ref={canvasRef} className = "absolute"></canvas>
         <canvas ref={tfcanvasRef} className="absolute" />
       </div>
-
 
 
 
@@ -342,7 +349,8 @@ export default function TensorFlow() {
                 >
                   <Image src={redoIcon} className="h-6" />
                 </button>
-                {poses==null?(<div></div>) : (
+                {(poses!=null && inFrame==1)? 
+               (
                   <button
                   onClick={(e) => {
                     //submit values
@@ -356,7 +364,7 @@ export default function TensorFlow() {
                 >
                   <Image src={Submit} className="h-6" />
                 </button>
-                )}
+                ):(<div></div>)}
                 
               </div>
             )}

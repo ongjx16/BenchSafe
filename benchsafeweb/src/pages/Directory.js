@@ -1,23 +1,32 @@
 import React, { useState } from "react";
 import Link from 'next/link';
+import Image from "next/image";
 
 
 function Directory(){
 
     return(
-        <div className="grid grid-rows-4 h-screen w-screen">
-            <div className="row-span-1 justify-center">
-                <h1 className="flex justify-center">Welcome! Choose Login Option Below</h1>
-            </div>
-            <div className="row-span-3">
-                <div className="">
-                    <Link href="/AdminLandingPage">
-                        <button className="button">Admin</button>
-                    </Link> 
-                    <Link href="/UserLandingPage">
-                        <button className="button">User</button>
-                    </Link>
-                </div>                     
+        <div className="flex flex-row justify-center w-screen">
+            <div className="auth-form-container w-full">
+                    {/* Header */}
+                    <div>
+                        <h1 className="my-3">Welcome Back</h1>
+                        <h2>How You Would Like To Login?</h2>
+                    </div>
+                    
+                    {/* Login options */}
+                    <div className="grid grid-rows-2">
+
+                        {/* admin */}
+                        <div>
+                            
+                        </div>
+
+                        {/* user */}
+                        <div>
+
+                        </div>
+                    </div>
             </div>
         </div>
     )

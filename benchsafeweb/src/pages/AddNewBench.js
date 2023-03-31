@@ -22,7 +22,7 @@ return(
           {/* Header */}
           <div className="grid grid-cols-4">
             <div className="flex justify-self-start col-span-1">
-                <Link href="/LandingPage">
+                <Link href="/AdminLandingPage">
                     <Image src={BackButton} alt="BackButton" className="m-1"width={40} height={40} />
                 </Link>
             </div>

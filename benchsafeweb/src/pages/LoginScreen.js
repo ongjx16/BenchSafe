@@ -24,7 +24,6 @@ function LoginScreen() {
       console.log("login successful")
       Router.push({
         pathname: '/UserLandingPage',
-        query: { user: user },
       })
 
       // ...

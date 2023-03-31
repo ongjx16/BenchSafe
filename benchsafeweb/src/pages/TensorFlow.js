@@ -214,7 +214,7 @@ export default function TensorFlow() {
       drawKeypoints(poses.keypoints, 0.2, ctx);
       drawSkeleton(poses.keypoints, 0.2, ctx);
       console.log("calculating length");
-      //calcHeight(pHeight, poses);
+      calcHeight(poses);
     }
 
 
@@ -265,7 +265,7 @@ export default function TensorFlow() {
   }
 
 
-  function calcHeight(pHeight, poses) {
+  function calcHeight(poses) {
     const pts = poses.keypoints;
     setAnkleH((pts[15].position.y + pts[16].position.y) / 2);
     setEyesH((pts[1].position.y + pts[2].position.y) / 2);

@@ -20,9 +20,9 @@ function SelectExercise() {
     const calculateFlat = async (e) => {
         //e.preventDefault();
         try {
-           // const hip = router.query.hipfeetH;
-            const hip = 1.2;
-            const res = await fetch(`/angle-for-flat-bench?nipple_height=${hip}`);
+            // const hip = router.query.hipfeetH;
+            //const hip = 1.2;
+            const res = await fetch(`/angle-for-flat-bench?nipple_height=${router.query.hipfeetH}`);
             //const res = await fetch(`http://172.20.10.5:5000/angle-for-flat-bench?nipple_height=1.2`);
 
             // const data = await res.json();
@@ -38,8 +38,8 @@ function SelectExercise() {
     const onRelay = async (e) => {
         //e.preventDefault();
         try {
-           // const hip = router.query.hipfeetH;
-            const res = await fetch(`/toggle-relay?state=of`);
+            // const hip = router.query.hipfeetH;
+            const res = await fetch(`/toggle-relay?state=on`);
             //const res = await fetch(`http://172.20.10.5:5000/angle-for-flat-bench?nipple_height=1.2`);
 
             // const data = await res.json();
@@ -60,9 +60,7 @@ function SelectExercise() {
                     {/* Header */}
                     <div className="grid grid-cols-4">
                         <div className="flex justify-self-start col-span-1">
-                            <Link href="/LandingPage">
-                                <Image src={BackButton} alt="BackButton" className="m-1" width={40} height={40} />
-                            </Link>
+                            <Image src={BackButton} alt="BackButton" className="m-1" width={40} height={40} onClick={() => router.back()} />
                         </div>
 
                         <h1 className="flex justify-center col-span-2 py-2">Bench 1</h1>
@@ -125,10 +123,9 @@ function SelectExercise() {
                         //     //
                         // }
 
-                        // Router.push({
-                        //     pathname: '/LaserMarking',
-                        //     query: { nipHipH: router.query.nipHipH, exercise: exercise },
-                        // });
+                        Router.push({
+                            pathname: '/LaserMarking',
+                        });
 
                     }}
                 >Next</button>

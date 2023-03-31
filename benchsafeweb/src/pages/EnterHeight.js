@@ -34,9 +34,7 @@ function EnterHeight() {
             <header >
                 <div className="grow-0 h-14 flex flex-row mt-auto py-5 justify-between mx-5">
                     <div className="flex justify-self-start col-span-1">
-                        <Link href="/LandingPage">
-                            <Image src={BackButton} alt="BackButton" className="m-1" width={40} height={40} />
-                        </Link>
+                        <Image src={BackButton} alt="BackButton" className="m-1" width={40} height={40} onClick={() => router.back()} />
                     </div>
 
                     <h1 className="flex justify-center col-span-2 py-2">Bench 1</h1>
@@ -60,17 +58,17 @@ function EnterHeight() {
                 className="mx-5" />
 
             <footer className="mt-auto mx-5">
-                    <button
-                        className="button mb-5"
-                        onClick={(e) => {
-                            //submit values
-                            // <Link 
-                            Router.push({
-                                pathname: '/SelectExercise',
-                                query: { hipfeetH: finalH },
-                            })
-                        }}
-                    >Next</button>
+                <button
+                    className="button mb-5"
+                    onClick={(e) => {
+                        //submit values
+                        // <Link 
+                        Router.push({
+                            pathname: '/SelectExercise',
+                            query: { hipfeetH: finalH },
+                        })
+                    }}
+                >Next</button>
             </footer>
         </div>
     )

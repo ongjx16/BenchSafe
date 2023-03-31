@@ -76,9 +76,13 @@ function LoginScreen(){
 
         {/* login button */}
         <div>
-          <Link href="/Directory">
-            <button className="button">Login</button>
-          </Link>
+          {/* <Link href="/LandingPage"> */}
+            <button className="button"
+            onClick={(event) => { 
+              console.log("logging in");
+              login(loginEmail, loginPassword); }}
+            >Login</button>
+          {/* </Link> */}
           <div>
             <Link href="/RegisterScreen">
               <button className="link-btn">Don't have an account? Register Here</button>

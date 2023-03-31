@@ -43,7 +43,7 @@ function Exit() {
             </div>
 
             {/* Add button */}
-            <Link href="/LoginScreen">
+            <Link href="/UserLandingPage">
                 <button className="button">Exit</button>
             </Link>
 

@@ -6,6 +6,7 @@ import Location from "../assets/Location.svg";
 import logout1 from "../assets/logout1.svg";
 import FlatBenchPress from "../images/FlatBenchPress.jpg";
 import InclineBenchPress from "../images/InclineBenchPress.jpg";
+import Router from "next/router";
 
 function UserLandingPage() {
     return(
@@ -57,7 +58,11 @@ function UserLandingPage() {
                                 </p>
             
                                 <Link href="/EnterHeight">
-                                    <button className="button">Select Bench</button>
+                                    <button className="button" onClick={(event) => { 
+                                        Router.push({
+                                            pathname: '/TensorFlow',
+                                          }) }}
+                                          >Select Bench</button>
                                 </Link>                            
                                 </div>
                             </div>
@@ -88,7 +93,12 @@ function UserLandingPage() {
                                 </p>
                                 
                                 <Link href="/EnterHeight">
-                                    <button className="button">Select Bench</button>
+                                    <button className="button"
+                                    onClick={(event) => { 
+                                        Router.push({
+                                            pathname: '/TensorFlow',
+                                          }) }}
+                                        >Select Bench</button>
                                 </Link>                               
                                 </div>
                             </div>

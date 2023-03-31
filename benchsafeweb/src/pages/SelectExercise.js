@@ -13,8 +13,45 @@ import Router from "next/router";
 function SelectExercise() {
 
     const router = useRouter();
-    console.log(router.query.nipHipH)
+    console.log(router.query.hipfeetH)
     const [exercise, setExercise] = useState('')
+    const [results, setResults] = useState([]);
+
+    const calculateFlat = async (e) => {
+        //e.preventDefault();
+        try {
+            // const hip = router.query.hipfeetH;
+            //const hip = 1.2;
+            const res = await fetch(`/angle-for-flat-bench?nipple_height=${router.query.hipfeetH}`);
+            //const res = await fetch(`http://172.20.10.5:5000/angle-for-flat-bench?nipple_height=1.2`);
+
+            // const data = await res.json();
+            // setResults(data.results);
+            console.log(res);
+
+        } catch (error) {
+            console.log('An error occurred. Please try again later.');
+            setResults([]);
+        }
+    };
+
+    const onRelay = async (e) => {
+        //e.preventDefault();
+        try {
+            // const hip = router.query.hipfeetH;
+            const res = await fetch(`/toggle-relay?state=on`);
+            //const res = await fetch(`http://172.20.10.5:5000/angle-for-flat-bench?nipple_height=1.2`);
+
+            // const data = await res.json();
+            // setResults(data.results);
+            console.log(res);
+
+        } catch (error) {
+            console.log('An error occurred. Please try again later.');
+            setResults([]);
+        }
+    };
+
     return (
         <div className="flex flex-row justify-center w-screen">
             <div className="auth-form-container">
@@ -23,9 +60,7 @@ function SelectExercise() {
                     {/* Header */}
                     <div className="grid grid-cols-4">
                         <div className="flex justify-self-start col-span-1">
-                            <Link href="/LandingPage">
-                                <Image src={BackButton} alt="BackButton" className="m-1" width={40} height={40} />
-                            </Link>
+                            <Image src={BackButton} alt="BackButton" className="m-1" width={40} height={40} onClick={() => router.back()} />
                         </div>
 
                         <h1 className="flex justify-center col-span-2 py-2">Bench 1</h1>
@@ -41,45 +76,56 @@ function SelectExercise() {
                     </div>
                     <div className="flex flex-row items-center justify-center mx-10">
                         <div>
-                        {exercise == "flat" ? (
-                        <Image src={FlatBenchPress} alt="FlatBenchPress"
-                            className="h-38"
-                        />)
-                            :
-                            (
-                                <Image src={FlatDeactivated} alt="FlatBenchPress"
+                            {exercise == "flat" ? (
+                                <Image src={FlatBenchPress} alt="FlatBenchPress"
                                     className="h-38"
-                                    onClick={(e) => {
-                                        setExercise("flat");
-                                    }} />
-                            )}
+                                />)
+                                :
+                                (
+                                    <Image src={FlatDeactivated} alt="FlatBenchPress"
+                                        className="h-38"
+                                        onClick={(e) => {
+                                            setExercise("flat");
+                                        }} />
+                                )}
                         </div>
                         <div>
-                        {exercise == "inclined" ? (
-                            <Image src={InclinedActivated} alt="InclineBenchPress" className="h-60"
-                            />
-                        ) : (
-                            <Image src={InclineBenchPress} alt="InclineBenchPress" className=" h-60"
-                                onClick={(e) => {
-                                    setExercise("inclined");
-                                }}
-                            />
-                        )}
+                            {exercise == "inclined" ? (
+                                <Image src={InclinedActivated} alt="InclineBenchPress" className="h-60"
+                                />
+                            ) : (
+                                <Image src={InclineBenchPress} alt="InclineBenchPress" className=" h-60"
+                                    onClick={(e) => {
+                                        setExercise("inclined");
+                                    }}
+                                />
+                            )}
                         </div>
 
-                        
+
 
                     </div>
                 </div>
 
                 {/* Add button */}
                 <button className="button"
-                    onClick={(e) => {
+                    onClick={async (e) => {
                         //submit values
+                        calculateFlat();
+
+                        // if (exercise == "flat") {
+                        //     await calculateFlat();
+                        // }
+                        // else if (exercise == "flat") {
+                        //     //calculate inclined
+                        // }
+                        // else {
+                        //     //
+                        // }
+
                         Router.push({
                             pathname: '/LaserMarking',
-                            query: { nipHipH: router.query.nipHipH, exercise: exercise },
-                        })
+                        });
 
                     }}
                 >Next</button>

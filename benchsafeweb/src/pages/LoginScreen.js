@@ -76,7 +76,7 @@ function LoginScreen(){
 
         {/* login button */}
         <div>
-          <Link href="/LandingPage">
+          <Link href="/Directory">
             <button className="button">Login</button>
           </Link>
           <div>

@@ -8,7 +8,7 @@ import BenchBodyLength from "../assets/BenchBodyLength.svg";
 import machineTiltAngle from "../assets/MachineTiltAngle.svg";
 
 
-function AddNewBranch() {
+function AddNewBench() {
 
     // const [benchName, setBenchName] = useState("");
     // const [benchBodyLength, setBenchBodyLength] = useState("");
@@ -84,4 +84,4 @@ return(
   )
 };
 
-export default AddNewBranch;
+export default AddNewBench;

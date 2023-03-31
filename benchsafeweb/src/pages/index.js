@@ -23,6 +23,7 @@ export default function Home() {
         <div className = "text-red-500 flex flex-col">
           <Link href="/LoginScreen">Login Page</Link>
           <Link href="/RegisterScreen">Register Page</Link>
+          <Link href="/Directory">Directory Page</Link>
           <Link href="/TensorFlow">Tensor Flow Page</Link>
           <Link href="/AdminLandingPage">Admin Landing Page</Link>
           <Link href="/UserLandingPage">User Landing Page</Link>    

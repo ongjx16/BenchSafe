@@ -23,7 +23,7 @@ function LoginScreen() {
       console.log(userCredential.user);
       console.log("login successful")
       Router.push({
-        pathname: '/UserLandingPage',
+        pathname: '/Directory',
       })
 
       // ...

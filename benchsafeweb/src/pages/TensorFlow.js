@@ -2,7 +2,7 @@
 import cameraIcon from "../assets/Camera.svg"
 import redoIcon from "../assets/Redo.svg"
 import "@tensorflow/tfjs-backend-webgl";
-import { useRouter} from 'next/router'
+import { useRouter } from 'next/router'
 import Router from "next/router";
 import Profile from "../assets/Profile.svg";
 import Home from "../assets/Home.svg";
@@ -21,10 +21,10 @@ export default function TensorFlow() {
   const [sHeight, setSHeight] = useState(null);
   const [sWidth, setSWidth] = useState(null);
 
-  const [ankleH, setAnkleH] = useState(null); 
-   const [eyesH, setEyesH] = useState(null); 
-   const [hipsH, setHipsH] = useState(null); 
-   const [shoulderH, setShoulderH] = useState(null); 
+  const [ankleH, setAnkleH] = useState(null);
+  const [eyesH, setEyesH] = useState(null);
+  const [hipsH, setHipsH] = useState(null);
+  const [shoulderH, setShoulderH] = useState(null);
 
   const router = useRouter()
   const tfcanvasRef = useRef(null);
@@ -75,10 +75,12 @@ export default function TensorFlow() {
 
     const setupCamera = async () => {
       try {
+        var w = screen.width;
+        var h = screen.height;
         const constraint = {
           video: {
-            width: { ideal: 550 },
-            height: { ideal: 350 },
+            width: { ideal: 0.58 * h },
+            height: { ideal: 0.8 * w },
             facingMode: cameraFacingMode,
           },
           audio: false,
@@ -172,15 +174,15 @@ export default function TensorFlow() {
 
       const pose = await estimatePose(imageData);
       console.log(pose);
-      if (pose.keypoints[15].score<0.9 || pose.keypoints[0].score<0.9){
+      if (pose.keypoints[15].score < 0.9 || pose.keypoints[0].score < 0.9) {
         setInFrame(0);
       }
-      else{
+      else {
         setInFrame(1);
       }
-      
+
       const sPose = await setPoses(pose);
-      
+
 
     }
 
@@ -270,28 +272,17 @@ export default function TensorFlow() {
     setAnkleH((pts[15].position.y + pts[16].position.y) / 2);
     setEyesH((pts[1].position.y + pts[2].position.y) / 2);
     //setHipsH ((pts[12].position.y + pts[11].position.y) / 2);
-    setShoulderH ((pts[5].position.y + pts[6].position.y) / 2);
+    setShoulderH((pts[5].position.y + pts[6].position.y) / 2);
   }
 
   return (
-    // <div className="relative">
-    //     <Image
-    //         src={sampleImage}
-    //         ref={imageRef}
-    //     //style={{ display: "none" }}
-
-    //     />
-    //     <tfcanvas ref={tfcanvasRef} className="absolute inset-0" />
-
-
-    // </div>
     <div className="flex flex-col min-h-screen">
 
       {/* Header design */}
       <header >
         <div className="grow-0 h-14 flex flex-row mt-auto py-5 justify-between mx-5">
           <div className="flex justify-self-start col-span-1">
-              <Image src={BackButton} alt="BackButton" className="m-1" width={40} height={40} onClick={() => router.back()}/>
+            <Image src={BackButton} alt="BackButton" className="m-1" width={40} height={40} onClick={() => router.back()} />
           </div>
 
           <h1 className="flex justify-center col-span-2 py-2">Bench 1</h1>
@@ -306,13 +297,13 @@ export default function TensorFlow() {
           <h3 className="flex justify-center text-center mx-5">Snap a photo to calibrate your body length.</h3>
           <text className="flex justify-center text-center mt-4 mb-2 mx-5">Please ensure your body is in the frame!</text>
 
-          {inFrame == 0?<text className ="flex justify-center text-center mt-4 mb-2 mx-5 text-red-500" > Body out of frame! Please retake photo.</text>: <div></div>}
+          {inFrame == 0 ? <text className="flex justify-center text-center mt-4 mb-2 mx-5 text-red-500" > Body out of frame! Please retake photo.</text> : <div></div>}
         </div>
       </header>
 
       <div className="w-screen flex flex-row justify-center relative">
-        <video className = "absolute"></video>
-        <canvas ref={canvasRef} className = "absolute"></canvas>
+        <video className="absolute"></video>
+        <canvas ref={canvasRef} className="absolute"></canvas>
         <canvas ref={tfcanvasRef} className="absolute" />
       </div>
 
@@ -349,23 +340,23 @@ export default function TensorFlow() {
                 >
                   <Image src={redoIcon} className="h-6" />
                 </button>
-                {(poses!=null && inFrame==1)? 
-               (
-                  <button
-                  onClick={(e) => {
-                    //submit values
-                    Router.push({
-                      pathname: '/EnterHeight',
-                      query: { ankleH: ankleH, eyesH: eyesH, shoulderH: shoulderH},
-                    })
-                  
-                  }}
-                  className="ease-linear bg-gradient-to-r from-purple-200 to-purple-300 w-20 h-20 rounded-full items-center flex justify-center mx-10"
-                >
-                  <Image src={Submit} className="h-6" />
-                </button>
-                ):(<div></div>)}
-                
+                {(poses != null && inFrame == 1) ?
+                  (
+                    <button
+                      onClick={(e) => {
+                        //submit values
+                        Router.push({
+                          pathname: '/EnterHeight',
+                          query: { ankleH: ankleH, eyesH: eyesH, shoulderH: shoulderH },
+                        })
+
+                      }}
+                      className="ease-linear bg-gradient-to-r from-purple-200 to-purple-300 w-20 h-20 rounded-full items-center flex justify-center mx-10"
+                    >
+                      <Image src={Submit} className="h-6" />
+                    </button>
+                  ) : (<div></div>)}
+
               </div>
             )}
           </div>

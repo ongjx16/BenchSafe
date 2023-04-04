@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from "next/image";
 import BackButton from "../assets/BackButton.svg";
 import Detail from "../assets/Detail.svg";
+import Router from "next/router";
 
 function Exit() {
 

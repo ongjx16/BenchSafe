@@ -18,7 +18,7 @@ function SelectExercise() {
     const [results, setResults] = useState([]);
 
     const calculateFlat = async (e) => {
-        //e.preventDefault();
+        e.preventDefault();
         try {
             // const hip = router.query.hipfeetH;
             //const hip = 1.2;
@@ -91,22 +91,27 @@ function SelectExercise() {
                 </div>
 
                 {/* Add button */}
-                const onRelay = async (e) => {
-        //e.preventDefault();
-        try {
-            // const hip = router.query.hipfeetH;
-            const res = await fetch(`/toggle-relay?state=on`);
-            //const res = await fetch(`http://172.20.10.5:5000/angle-for-flat-bench?nipple_height=1.2`);
+                <button className="button"
+                    onClick={async (e) => {
+                        //submit values
+                        calculateFlat();
 
-            // const data = await res.json();
-            // setResults(data.results);
-            console.log(res);
+                        // if (exercise == "flat") {
+                        //     await calculateFlat();
+                        // }
+                        // else if (exercise == "flat") {
+                        //     //calculate inclined
+                        // }
+                        // else {
+                        //     //
+                        // }
 
-        } catch (error) {
-            console.log('An error occurred. Please try again later.');
-            setResults([]);
-        }
-    };
+                        Router.push({
+                            pathname: '/LaserMarking',
+                        });
+
+                    }}
+                >Next</button>
 
             </div>
         </div>

@@ -5,6 +5,19 @@ import BackButton from "../assets/BackButton.svg";
 import Detail from "../assets/Detail.svg";
 
 function Exit() {
+
+    const offRelay = async (e) => {
+        //e.preventDefault();
+        try {
+            // const hip = router.query.hipfeetH;
+            const res = await fetch(`/toggle-relay?state=off`);
+            console.log(res);
+
+        } catch (error) {
+            console.log('An error occurred. Please try again later.');
+            setResults([]);
+        }
+    };
     return(
     <div className="flex flex-row justify-center">
         <div className="auth-form-container">
@@ -43,9 +56,16 @@ function Exit() {
             </div>
 
             {/* Add button */}
-            <Link href="/UserLandingPage">
-                <button className="button">Exit</button>
-            </Link>
+            <button className="button"
+                    onClick={async (e) => {
+                        //submit values
+                        offRelay();
+                        Router.push({
+                            pathname: '/UserLandingPage',
+                        });
+
+                    }}
+                >Exit</button>
 
         </div>
     </div>

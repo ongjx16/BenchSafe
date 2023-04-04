@@ -79,7 +79,7 @@ export default function TensorFlow() {
         var h = screen.height;
         const constraint = {
           video: {
-            width: { ideal: 0.58 * h },
+            width: { ideal: 0.6 * h },
             height: { ideal: 0.8 * w },
             facingMode: cameraFacingMode,
           },

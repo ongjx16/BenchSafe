@@ -77,8 +77,8 @@ export default function TensorFlow() {
       try {
         const constraint = {
           video: {
-            width: { ideal: 390 },
-            height: { ideal: 600 },
+            width: { ideal: 550 },
+            height: { ideal: 350 },
             facingMode: cameraFacingMode,
           },
           audio: false,
@@ -172,7 +172,7 @@ export default function TensorFlow() {
 
       const pose = await estimatePose(imageData);
       console.log(pose);
-      if (pose.keypoints[15].score<0.9){
+      if (pose.keypoints[15].score<0.9 || pose.keypoints[0].score<0.9){
         setInFrame(0);
       }
       else{
@@ -310,7 +310,7 @@ export default function TensorFlow() {
         </div>
       </header>
 
-      <div className="w-screen flex flex-row justify-center">
+      <div className="w-screen flex flex-row justify-center relative">
         <video className = "absolute"></video>
         <canvas ref={canvasRef} className = "absolute"></canvas>
         <canvas ref={tfcanvasRef} className="absolute" />

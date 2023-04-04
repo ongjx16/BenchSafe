@@ -36,19 +36,19 @@ function SelectExercise() {
     };
 
     return (
-        <div className="flex flex-row justify-center w-screen">
+        <div className="flex flex-row justify-center w-screen px-5">
             <div className="auth-form-container">
                 <div>
 
                     {/* Header */}
-                    <div className="grid grid-cols-4">
-                        <div className="flex justify-self-start col-span-1">
+                    <div className="grid grid-cols-4 mt-5">
+                        <div className=" justify-self-start col-span-1">
                             <Image src={BackButton} alt="BackButton" className="m-1" width={40} height={40} onClick={() => router.back()} />
                         </div>
 
                         <h1 className="flex justify-center col-span-2 py-2">Bench 1</h1>
 
-                        <div className="flex justify-self-end col-span-1">
+                        <div className="justify-self-end col-span-1">
                             <Image src={Detail} alt="Detail" className="m-1" width={40} height={40} />
                         </div>
                     </div>

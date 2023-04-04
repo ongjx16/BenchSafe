@@ -91,27 +91,22 @@ function SelectExercise() {
                 </div>
 
                 {/* Add button */}
-                <button className="button"
-                    onClick={async (e) => {
-                        //submit values
-                        calculateFlat();
+                const onRelay = async (e) => {
+        //e.preventDefault();
+        try {
+            // const hip = router.query.hipfeetH;
+            const res = await fetch(`/toggle-relay?state=on`);
+            //const res = await fetch(`http://172.20.10.5:5000/angle-for-flat-bench?nipple_height=1.2`);
 
-                        // if (exercise == "flat") {
-                        //     await calculateFlat();
-                        // }
-                        // else if (exercise == "flat") {
-                        //     //calculate inclined
-                        // }
-                        // else {
-                        //     //
-                        // }
+            // const data = await res.json();
+            // setResults(data.results);
+            console.log(res);
 
-                        Router.push({
-                            pathname: '/LaserMarking',
-                        });
-
-                    }}
-                >Next</button>
+        } catch (error) {
+            console.log('An error occurred. Please try again later.');
+            setResults([]);
+        }
+    };
 
             </div>
         </div>

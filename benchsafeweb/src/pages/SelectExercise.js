@@ -35,23 +35,6 @@ function SelectExercise() {
         }
     };
 
-    const onRelay = async (e) => {
-        //e.preventDefault();
-        try {
-            // const hip = router.query.hipfeetH;
-            const res = await fetch(`/toggle-relay?state=on`);
-            //const res = await fetch(`http://172.20.10.5:5000/angle-for-flat-bench?nipple_height=1.2`);
-
-            // const data = await res.json();
-            // setResults(data.results);
-            console.log(res);
-
-        } catch (error) {
-            console.log('An error occurred. Please try again later.');
-            setResults([]);
-        }
-    };
-
     return (
         <div className="flex flex-row justify-center w-screen">
             <div className="auth-form-container">

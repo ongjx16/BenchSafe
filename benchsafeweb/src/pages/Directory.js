@@ -30,7 +30,7 @@ function Directory(){
                           }}>
                               <div class="overflow-hidden rounded-xl bg-white shadow-2xl">
                                 <Image src={Admin} alt="Admin" class="h-2/3" />
-                                <div class="p-5">
+                                <div class="p-2">
                                 <h1 class="text-large m-auto">Admin</h1>
                                 </div>
                             </div>
@@ -46,7 +46,7 @@ function Directory(){
                           }}>
                               <div class="overflow-hidden rounded-xl bg-white shadow-2xl">
                                 <Image src={User} alt="User" class="h-2/3" />
-                                <div class="p-5">
+                                <div class="p-2">
                                 <h1 class="text-large">User</h1>
                                 </div>
                             </div>

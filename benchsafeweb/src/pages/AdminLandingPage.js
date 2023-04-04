@@ -18,19 +18,21 @@ function AdminLandingPage() {
 
             {/* Header design */}
             <header >
-                <div className="grow-0 h-14 flex flex-row justify-center">
-                    <div className="flex justify-self-start ">
+                <div className="grow-0 h-14 pt-5 flex flex-row justify-around items-center">
+                    <div className="row-col-1">
                         <Image src={BackButton} alt="BackButton" className="m-1" width={40} height={40} onClick={() => Router.push({
                             pathname: '/Directory',
                         })} />
                     </div>
+                    <div className = "flex flex-row mr-5">
+                        <div>
+                            <Image src={Location} alt="Location" className="m-1" width={18} height={30} />
+                        </div>
+                        <div>
+                            <h1 className="flex justify-center">EverydayFitness Jurong</h1>
+                        </div>
+                    </div>
 
-                    <div>
-                        <Image src={Location} alt="Location" className="m-1" width={18} height={30} />
-                    </div>
-                    <div>
-                        <h1 className="flex justify-center">EverydayFitness Jurong</h1>
-                    </div>
                 </div>
 
                 <div className="">

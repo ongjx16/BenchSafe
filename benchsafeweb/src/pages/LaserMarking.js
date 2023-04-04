@@ -25,12 +25,12 @@ function LaserMarking() {
     }
   };
   return (
-    <div className="flex flex-row justify-center">
+    <div className="flex flex-row justify-center px-5">
       <div className="auth-form-container">
         <div>
 
           {/* Header */}
-          <div className="grid grid-cols-6">
+          <div className="grid grid-cols-6 mt-5">
             <div className="flex justify-self-start col-span-1">
               <Link href="/EnterHeight">
                 <Image src={BackButton} alt="BackButton" className="m-1" width={40} height={40} />

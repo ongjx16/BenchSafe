@@ -14,7 +14,7 @@ function UserLandingPage() {
 
             {/* Header design */}
             <header >
-                <div className="grow-0 h-14 flex flex-row justify-center">
+                <div className="grow-0 h-14 pt-5 flex flex-row justify-center">
                     <div>
                         <Image src={Location} alt="Location" className="m-1"width={18} height={30} />
                     </div>

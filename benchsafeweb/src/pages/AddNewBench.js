@@ -5,6 +5,7 @@ import BackButton from "../assets/BackButton.svg";
 import Detail from "../assets/Detail.svg";
 import Router from "next/router";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 function AddNewBench() {
   const router = useRouter()
@@ -32,7 +33,7 @@ function AddNewBench() {
   };
 
   return (
-    <div className="flex flex-row justify-center">
+    <div className="flex flex-row justify-center my-5 ">
       <div className="auth-form-container">
         <div>
 
@@ -56,7 +57,7 @@ function AddNewBench() {
             <h2>Enter Bench Details</h2>
           </div>
           <form
-            className="addbench-form">
+            className="addbench-form mx-5">
 
             <input
               // onChange={(event) => {setBenchName(event.target.value);}}
@@ -88,7 +89,7 @@ function AddNewBench() {
 
           </form>
         </div>
-
+        <div className="mx-5">
         <button className="button"
           onClick={async (e) => {
             //submit values
@@ -100,6 +101,9 @@ function AddNewBench() {
 
           }}
         >Add</button>
+        </div>
+
+        
 
       </div>
     </div>

@@ -5,6 +5,7 @@ import BackButton from "../assets/BackButton.svg";
 import Detail from "../assets/Detail.svg";
 import Router from "next/router";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 function AddNewBench() {
   const router = useRouter()

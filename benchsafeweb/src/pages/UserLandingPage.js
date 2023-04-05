@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Home from "../assets/Home.svg";
 import Image from "next/image";
 import Location from "../assets/Location.svg";
-import logout from "../assets/logout.svg";
+import logout1 from "../assets/logout1.svg";
 import FlatBenchPress from "../images/FlatBenchPress.jpg";
 import InclineBenchPress from "../images/InclineBenchPress.jpg";
 import Router from "next/router";
@@ -117,7 +117,7 @@ function UserLandingPage() {
 
                         {/* Profile */}
                         <Link href="/LoginScreen" className="flex justify-center">
-                            <Image src={logout} alt="logout" width={50} height={50} />
+                            <Image src={logout1} alt="logout" width={50} height={50} />
                         </Link>
                     </div>
             </footer>

@@ -19,7 +19,7 @@ function SelectExercise() {
     const [results, setResults] = useState([]);
 
     const calculateFlat = async (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         try {
             // const hip = router.query.hipfeetH;
             //const hip = 1.2;
@@ -35,6 +35,17 @@ function SelectExercise() {
             setResults([]);
         }
     };
+
+    const calculateInclined = async (e) => {
+        try {
+            const res = await fetch(`/angle-for-inclined-bench?nipple_height=${router.query.hipfeetH}`);
+            console.log(res);
+        } catch (error) {
+            console.log('An error occurred. Please try again later.');
+            setResults([]);
+        }
+    };
+
 
     return (
         <div className="flex flex-row justify-center w-screen px-5">
@@ -106,17 +117,13 @@ function SelectExercise() {
                 <button className="button"
                     onClick={async (e) => {
                         //submit values
-                        calculateFlat();
-
-                        // if (exercise == "flat") {
-                        //     await calculateFlat();
-                        // }
-                        // else if (exercise == "flat") {
-                        //     //calculate inclined
-                        // }
-                        // else {
-                        //     //
-                        // }
+                        if (exercise == "flat") {
+                            await calculateFlat();
+                        }
+                        else if (exercise == "inclined") {
+                            //calculate inclined
+                            await calculateInclined();
+                        }
 
                         Router.push({
                             pathname: '/LaserMarking',

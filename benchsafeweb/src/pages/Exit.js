@@ -11,7 +11,7 @@ function Exit() {
         //e.preventDefault();
         try {
             // const hip = router.query.hipfeetH;
-            const res = await fetch(`/toggle-relay?state=off`);
+            const res = await fetch(`api/proxy?endpoint=toggle-relay?state=off`);
             console.log(res);
 
         } catch (error) {

@@ -17,7 +17,7 @@ function AddNewBench() {
       const payload = { bench_length: benchLength, angle_between_flat_bench_and_slope: benchAngle };
       const queryString = new URLSearchParams(payload).toString();
 
-      const response = await fetch(`/update-json?${queryString}`, {
+      const response = await fetch(`api/proxy?endpoint=update-json?${queryString}`, {
         headers: {
           'Content-Type': 'application/json'
         }

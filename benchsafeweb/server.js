@@ -10,6 +10,7 @@ const handle = app.getRequestHandler();
 const httpsOptions = {
   key: readFileSync('./localhost-key.pem'),
   cert: readFileSync('./localhost.pem'),
+  allowHTTP1: true,
 };
 
 app.prepare().then(() => {

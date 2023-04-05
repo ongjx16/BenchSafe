@@ -4,6 +4,7 @@ import Image from "next/image";
 import BackButton from "../assets/BackButton.svg";
 import Detail from "../assets/Detail.svg";
 import FlatBenchPress from "../assets/FlatBenchPress.svg";
+import FlatBenchImg from "../assets/FlatBenchImg.svg"
 import FlatDeactivated from "../assets/FlatDeactivated.svg";
 import InclineBenchPress from "../assets/InclineBenchPress.svg";
 import InclinedActivated from "../assets/InclinedActivated.svg";
@@ -57,35 +58,46 @@ function SelectExercise() {
                     <div className="my-5">
                         <h2>Select Your Exercise</h2>
                     </div>
-                    <div className="flex flex-row items-center justify-center mx-10">
-                        <div>
-                            {exercise == "flat" ? (
-                                <Image src={FlatBenchPress} alt="FlatBenchPress"
-                                    className="h-38"
-                                />)
-                                :
-                                (
-                                    <Image src={FlatDeactivated} alt="FlatBenchPress"
-                                        className="h-38"
-                                        onClick={(e) => {
-                                            setExercise("flat");
-                                        }} />
-                                )}
-                        </div>
-                        <div>
-                            {exercise == "inclined" ? (
-                                <Image src={InclinedActivated} alt="InclineBenchPress" className="h-60"
-                                />
-                            ) : (
-                                <Image src={InclineBenchPress} alt="InclineBenchPress" className=" h-60"
-                                    onClick={(e) => {
-                                        setExercise("inclined");
-                                    }}
-                                />
+                    <div className="flex flex-row items-center mx-5 justify-between">
+
+                        {exercise == "flat" ? (
+                            <div className="items-center flex justify-center flex-col rounded-3xl h-36 w-36 drop-shadow-lg bg-white p-4 pt-8 outline outline-1 outline-blue-600 mr-3" >
+                                <text className="text-xs">Flat Bench Press</text>
+                                <Image src={FlatBenchImg} alt="FlatBenchPress"
+                                    className="h-38 mx-5"
+                                /> </div>)
+                            :
+                            (
+                                <div className="items-center flex justify-center flex-col rounded-3xl h-36 w-36 mr-3 drop-shadow-lg bg-white p-4 pt-8" 
+                                onClick={ (e) => {
+                                    //submit values
+                                    setExercise("flat")
+            
+                                }}>
+                                    <text className="text-xs">Flat Bench Press</text>
+                                    <Image src={FlatBenchImg} alt="FlatBenchPress"
+                                        className="h-38 mx-5"
+                                    /> </div>
                             )}
-                        </div>
 
 
+                        {exercise == "inclined" ? (
+                            <div className="items-center flex justify-center flex-col rounded-3xl h-36 w-36 drop-shadow-lg bg-white p-4 pt-8 outline outline-1 outline-blue-600 ml-3 " >
+                                <text className="text-xs">Inclined Bench Press</text>
+                                <Image src={FlatBenchImg} alt="FlatBenchPress"
+                                    className="h-38 mx-5"
+                                /></div>
+                        ) : (
+                            <div className="items-center flex justify-center flex-col rounded-3xl h-36 w-36 ml-3 drop-shadow-lg bg-white p-4 pt-8"  onClick={ (e) => {
+                                //submit values
+                                setExercise("inclined")
+        
+                            }}>
+                                <text className="text-xs">Inclined Bench Press</text>
+                                <Image src={FlatBenchImg} alt="FlatBenchPress"
+                                    className="h-38 mx-5"
+                                /></div>
+                        )}
 
                     </div>
                 </div>

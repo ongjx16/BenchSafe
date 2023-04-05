@@ -4,7 +4,7 @@ import Home from "../assets/Home.svg";
 import Image from "next/image";
 import Location from "../assets/Location.svg";
 import AddBench from "../assets/AddBench.svg";
-import logout1 from "../assets/logout1.svg";
+import logout from "../assets/logout.svg";
 import FlatBenchPress from "../images/FlatBenchPress.jpg";
 import InclineBenchPress from "../images/InclineBenchPress.jpg";
 import BackButton from "../assets/BackButton.svg";
@@ -129,7 +129,7 @@ function AdminLandingPage() {
 
                     {/* Profile */}
                     <Link href="/LoginScreen" className="flex justify-center">
-                        <Image src={logout1} alt="logout1" width={40} height={40} />
+                        <Image src={logout} alt="logout" width={40} height={40} />
                     </Link>
                 </div>
             </footer>

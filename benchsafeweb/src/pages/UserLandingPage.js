@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Home from "../assets/Home.svg";
 import Image from "next/image";
 import Location from "../assets/Location.svg";
-import logout1 from "../assets/logout1.svg";
+import logout from "../assets/logout.svg";
 import FlatBenchPress from "../images/FlatBenchPress.jpg";
 import InclineBenchPress from "../images/InclineBenchPress.jpg";
 import Router from "next/router";
@@ -109,15 +109,15 @@ function UserLandingPage() {
 
             {/* Bottom navigation bar design*/}
             <footer className="flex flex-row justify-center w-screen h-24">
-                    <div className="grid grid-cols-2 bg-slate-100 rounded min-h-fit min-w-fit w-screen drop-shadow-md inline-block">
+                    <div className="flex flex-row justify-center bg-slate-100 rounded min-h-fit min-w-fit w-screen drop-shadow-md">
                         {/* Home */}
-                        <Link href="/LandingPage" className="flex justify-center">
+                        {/* <Link href="/LandingPage" className="flex justify-center">
                             <Image src={Home} alt="Home" width={40} height={40} />
-                        </Link>
+                        </Link> */}
 
                         {/* Profile */}
                         <Link href="/LoginScreen" className="flex justify-center">
-                            <Image src={logout1} alt="logout" width={40} height={40} />
+                            <Image src={logout} alt="logout" width={50} height={50} />
                         </Link>
                     </div>
             </footer>

@@ -38,7 +38,7 @@ function SelectExercise() {
 
     const calculateInclined = async (e) => {
         try {
-            const res = await fetch(`api/proxy?endpoint=angle-for-inclined-bench?nipple_height=${router.query.hipfeetH}`);
+            const res = await fetch(`api/proxy?endpoint=angle-for-inclined-bench&nipple_height=${router.query.hipfeetH}`);
             console.log(res);
         } catch (error) {
             console.log('An error occurred. Please try again later.');

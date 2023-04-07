@@ -16,8 +16,10 @@ function objectToQueryString(obj) {
 
 export default async function handler(req, res) {
     const { query } = req;
-    const { endpoint } = query
+    const { endpoint } = query;
+    console.log(endpoint);
     const parameters = objectToQueryString(query)
+    console.log(parameters)
 
     const url = `http://172.20.10.6:5000/${endpoint}?${parameters}`;
     console.log("url: ", url)

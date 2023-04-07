@@ -22,8 +22,9 @@ function EditBench() {
     try {
       const payload = { bench_length: benchLength, angle_between_flat_bench_and_slope: benchAngle };
       const queryString = new URLSearchParams(payload).toString();
+      console.log(queryString);
       //http://172.20.10.6:5000/angle-for-inclined-bench?nipple_height=1.4
-      const response = await fetch(`api/proxy?endpoint=update-json?${queryString}`, {
+      const response = await fetch(`api/proxy?endpoint=update-json&${queryString}`, {
         headers: {
           'Content-Type': 'application/json'
         }

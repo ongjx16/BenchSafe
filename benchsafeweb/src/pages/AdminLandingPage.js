@@ -1,6 +1,6 @@
 import React from "react";
 import Link from 'next/link';
-import Home from "../assets/Home.svg";
+import Home1 from "../assets/Home1.svg";
 import Image from "next/image";
 import Location from "../assets/Location.svg";
 import AddBench from "../assets/AddBench.svg";
@@ -119,7 +119,7 @@ function AdminLandingPage() {
                 <div className="grid grid-cols-3 bg-slate-100 rounded min-h-fit min-w-fit w-screen drop-shadow-md inline-block">
                     {/* Home */}
                     <Link href="/Directory" className="flex justify-center">
-                        <Image src={Home} alt="Home" width={40} height={40} />
+                        <Image src={Home1} alt="Home" width={40} height={40} />
                     </Link>
 
                     {/* Add Bench */}

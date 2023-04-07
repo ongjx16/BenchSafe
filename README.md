@@ -1,10 +1,12 @@
-# BenchSafe
+<h1 align="center">BenchSafe</h1>
 
-![logo_cropped](https://user-images.githubusercontent.com/79267462/230539291-13647205-35a4-432e-a3cd-8b8c72f07789.png)
-
-BenchSafe was built as part of the RE2012 Renaissance Engineering Design Module in Nanyang Technological University.
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/79267462/230576051-5fb94193-3904-4bf3-a971-5c8ed353017c.png" />
+</p>
 
 ## About
+
+BenchSafe was built as part of the RE2012 Renaissance Engineering Design Module in Nanyang Technological University.
 
 ### Problem
 

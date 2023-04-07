@@ -34,7 +34,7 @@ A Next.js webapp integrated with TensorFlow.js (Posenet) to get necessary body a
 ![REDesign - BenchSafe Poster](https://user-images.githubusercontent.com/79267462/230539280-5d118293-a6ed-4b0e-9a5f-48dba83f006a.png)
 
 ## Contributors
-Jing Xuan @ongjx16
-Aaron Chua @aaronchualala
-Shawn Chan @shawnkchan
-Han Yu @hohanyu
+- Jing Xuan @ongjx16
+- Aaron Chua @aaronchualala
+- Shawn Chan @shawnkchan
+- Han Yu @hohanyu

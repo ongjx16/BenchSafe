@@ -7,18 +7,7 @@ import Router from "next/router";
 
 function Exit() {
 
-    const offRelay = async (e) => {
-        //e.preventDefault();
-        try {
-            // const hip = router.query.hipfeetH;
-            const res = await fetch(`/toggle-relay?state=off`);
-            console.log(res);
-
-        } catch (error) {
-            console.log('An error occurred. Please try again later.');
-            setResults([]);
-        }
-    };
+    
     return (
         <div className="flex flex-row justify-center px-5">
             <div className="auth-form-container">
@@ -63,7 +52,7 @@ function Exit() {
                 <button className="button"
                     onClick={async (e) => {
                         //submit values
-                        offRelay();
+                        
                         Router.push({
                             pathname: '/UserLandingPage',
                         });

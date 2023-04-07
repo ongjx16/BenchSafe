@@ -22,8 +22,9 @@ function EditBench() {
     try {
       const payload = { bench_length: benchLength, angle_between_flat_bench_and_slope: benchAngle };
       const queryString = new URLSearchParams(payload).toString();
-
-      const response = await fetch(`/update-json?${queryString}`, {
+      console.log(queryString);
+      //http://172.20.10.6:5000/angle-for-inclined-bench?nipple_height=1.4
+      const response = await fetch(`api/proxy?endpoint=update-json&${queryString}`, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -38,17 +39,17 @@ function EditBench() {
   };
 
   return (
-    <div className="flex flex-row justify-center">
+    <div className="flex flex-row justify-center my-5 mx-1">
       <div className="auth-form-container">
         <div>
 
           {/* Header */}
-          <div className="grid grid-cols-4">
+          <div className="grid grid-cols-5">
             <div className="flex justify-self-start col-span-1">
               <Image src={BackButton} alt="BackButton" className="m-1" width={40} height={40} onClick={() => router.back()} />
             </div>
 
-            <h1 className="flex justify-center col-span-2 py-2 mx-8">Edit Bench</h1>
+            <h1 className="flex justify-center col-span-3 py-2 mx-8">Edit Bench</h1>
 
             <div className="flex justify-self-end col-span-1">
               <Image src={Detail} alt="Detail" className="m-1" width={40} height={40} />

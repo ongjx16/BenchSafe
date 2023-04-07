@@ -17,8 +17,8 @@ function EnterHeight() {
         async function calcHeight() {
             console.log(height);
             const n = height / (router.query.ankleH - router.query.eyesH);
-            const ans = (n * (router.query.ankleH - router.query.shoulderH)) - 20;
-            const calc = await setFinalH(ans);
+            const ans = (n * (router.query.hipsH - router.query.shoulderH)) - 20;
+            const calc = await setFinalH(ans/100);
 
             console.log("finalH")
             console.log(finalH)

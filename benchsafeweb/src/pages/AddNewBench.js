@@ -18,7 +18,7 @@ function AddNewBench() {
       const payload = { bench_length: benchLength, angle_between_flat_bench_and_slope: benchAngle };
       const queryString = new URLSearchParams(payload).toString();
 
-      const response = await fetch(`/update-json?${queryString}`, {
+      const response = await fetch(`api/proxy?endpoint=update-json?${queryString}`, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -33,7 +33,7 @@ function AddNewBench() {
   };
 
   return (
-    <div className="flex flex-row justify-center">
+    <div className="flex flex-row justify-center my-5 ">
       <div className="auth-form-container">
         <div>
 
@@ -57,7 +57,7 @@ function AddNewBench() {
             <h2>Enter Bench Details</h2>
           </div>
           <form
-            className="addbench-form">
+            className="addbench-form mx-5">
 
             <input
               // onChange={(event) => {setBenchName(event.target.value);}}
@@ -89,7 +89,7 @@ function AddNewBench() {
 
           </form>
         </div>
-
+        <div className="mx-5">
         <button className="button"
           onClick={async (e) => {
             //submit values
@@ -101,6 +101,9 @@ function AddNewBench() {
 
           }}
         >Add</button>
+        </div>
+
+        
 
       </div>
     </div>

@@ -65,9 +65,9 @@ function AdminLandingPage() {
                                         Rogue’s fully updated Westside Bench is a heavy-duty juggernaut inspired by Westside Barbell’s original designs.
                                     </p>
 
-                                    <Link href="/EnterHeight">
+                                    {/* <Link href="/EnterHeight">
                                         <button className="button">Select</button>
-                                    </Link>
+                                    </Link> */}
 
                                     <Link href="/EditBench">
                                         <button className="button">Edit</button>
@@ -100,9 +100,9 @@ function AdminLandingPage() {
                                         Made in the USA from 3x3" 11-Gauge Steel, the Monster Westside Bench stands among the most versatile, heavy-duty, uncompromising bench racks ever built
                                     </p>
 
-                                    <Link href="/EnterHeight">
+                                    {/* <Link href="/EnterHeight">
                                         <button className="button">Select</button>
-                                    </Link>
+                                    </Link> */}
 
                                     <Link href="/EditBench">
                                         <button className="button">Edit</button>

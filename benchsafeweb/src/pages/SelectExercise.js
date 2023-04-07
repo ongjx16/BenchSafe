@@ -19,11 +19,11 @@ function SelectExercise() {
     const [results, setResults] = useState([]);
 
     const calculateFlat = async (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         try {
             // const hip = router.query.hipfeetH;
             //const hip = 1.2;
-            const res = await fetch(`/angle-for-flat-bench?nipple_height=${router.query.hipfeetH}`);
+            const res = await fetch(`/api/proxy?endpoint=angle-for-flat-bench&nipple_height=${router.query.hipfeetH}`);
             //const res = await fetch(`http://172.20.10.5:5000/angle-for-flat-bench?nipple_height=1.2`);
 
             // const data = await res.json();
@@ -35,6 +35,17 @@ function SelectExercise() {
             setResults([]);
         }
     };
+
+    const calculateInclined = async (e) => {
+        try {
+            const res = await fetch(`api/proxy?endpoint=angle-for-inclined-bench&nipple_height=${router.query.hipfeetH}`);
+            console.log(res);
+        } catch (error) {
+            console.log('An error occurred. Please try again later.');
+            setResults([]);
+        }
+    };
+
 
     return (
         <div className="flex flex-row justify-center w-screen px-5">
@@ -68,12 +79,12 @@ function SelectExercise() {
                                 /> </div>)
                             :
                             (
-                                <div className="items-center flex justify-center flex-col rounded-3xl h-36 w-36 mr-3 drop-shadow-lg bg-white p-4 pt-8" 
-                                onClick={ (e) => {
-                                    //submit values
-                                    setExercise("flat")
-            
-                                }}>
+                                <div className="items-center flex justify-center flex-col rounded-3xl h-36 w-36 mr-3 drop-shadow-lg bg-white p-4 pt-8"
+                                    onClick={(e) => {
+                                        //submit values
+                                        setExercise("flat")
+
+                                    }}>
                                     <text className="text-xs">Flat Bench Press</text>
                                     <Image src={FlatBenchImg} alt="FlatBenchPress"
                                         className="h-38 mx-5"
@@ -88,10 +99,10 @@ function SelectExercise() {
                                     className="h-38 mx-5"
                                 /></div>
                         ) : (
-                            <div className="items-center flex justify-center flex-col rounded-3xl h-36 w-36 ml-3 drop-shadow-lg bg-white p-4 pt-8"  onClick={ (e) => {
+                            <div className="items-center flex justify-center flex-col rounded-3xl h-36 w-36 ml-3 drop-shadow-lg bg-white p-4 pt-8" onClick={(e) => {
                                 //submit values
                                 setExercise("inclined")
-        
+
                             }}>
                                 <text className="text-xs">Inclined Bench Press</text>
                                 <Image src={FlatBenchImg} alt="FlatBenchPress"
@@ -105,18 +116,15 @@ function SelectExercise() {
                 {/* Add button */}
                 <button className="button"
                     onClick={async (e) => {
+                        console.log(exercise);
                         //submit values
-                        calculateFlat();
-
-                        // if (exercise == "flat") {
-                        //     await calculateFlat();
-                        // }
-                        // else if (exercise == "flat") {
-                        //     //calculate inclined
-                        // }
-                        // else {
-                        //     //
-                        // }
+                        if (exercise == "flat") {
+                            await calculateFlat();
+                        }
+                        else if (exercise == "inclined") {
+                            //calculate inclined
+                            await calculateInclined();
+                        }
 
                         Router.push({
                             pathname: '/LaserMarking',
